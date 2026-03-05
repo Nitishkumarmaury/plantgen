@@ -16,24 +16,28 @@ const values = [
     title: "Eco-Friendly First",
     description:
       "Every gift we send is sustainable — from handpicked healthy plants to biodegradable packaging. No plastic. No waste.",
+    color: "bg-brand-50 text-brand-600",
   },
   {
     icon: Heart,
     title: "Emotion-Driven Gifting",
     description:
       "Plants are living gifts that grow with memories. We pair each plant with personalized messages and premium gift wrapping.",
+    color: "bg-coral-50 text-coral-500",
   },
   {
     icon: Truck,
     title: "Chandigarh Roots",
     description:
       "We proudly serve Chandigarh, Mohali, Panchkula, and Zirakpur with same-day and scheduled delivery — always on time.",
+    color: "bg-teal-50 text-teal-600",
   },
   {
     icon: Users,
     title: "Corporate & Bulk",
     description:
       "From startups to enterprises, we've gifted to 50+ corporate clients with custom branding and bulk pricing.",
+    color: "bg-warm-50 text-warm-600",
   },
 ];
 
@@ -92,9 +96,9 @@ export default function AboutPage() {
         <StaggerContainer className="grid sm:grid-cols-2 gap-6">
           {values.map((v) => (
             <StaggerItem key={v.title}>
-              <div className="bg-white rounded-2xl p-6 border border-neutral-100 h-full">
-                <div className="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center mb-4">
-                  <v.icon className="w-5 h-5 text-brand-700" />
+              <div className="bg-white rounded-2xl p-6 border border-neutral-100 h-full hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+                <div className={`w-10 h-10 ${v.color} rounded-xl flex items-center justify-center mb-4`}>
+                  <v.icon className="w-5 h-5" />
                 </div>
                 <h3 className="text-lg font-semibold text-neutral-900 mb-2">
                   {v.title}
@@ -109,10 +113,10 @@ export default function AboutPage() {
       </section>
 
       {/* Why Plants */}
-      <section className="bg-neutral-900 py-16 mb-20">
+      <section className="bg-gradient-to-br from-neutral-900 via-brand-950 to-neutral-900 py-16 mb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <FadeIn>
-            <Award className="w-8 h-8 text-brand-400 mx-auto mb-4" />
+            <Award className="w-8 h-8 text-warm-400 mx-auto mb-4" />
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
               Why Choose Plants as Gifts?
             </h2>
@@ -124,7 +128,7 @@ export default function AboutPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/shop"
-                className="px-6 py-3 bg-white text-neutral-900 font-medium rounded-xl hover:bg-neutral-100 transition-colors"
+                className="px-6 py-3 bg-gradient-to-r from-brand-500 to-teal-500 text-white font-medium rounded-xl hover:from-brand-600 hover:to-teal-600 shadow-lg shadow-brand-500/20 transition-all"
               >
                 Browse Gift Plants
               </Link>

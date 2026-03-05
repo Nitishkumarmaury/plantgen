@@ -5,12 +5,14 @@ import { CATEGORIES } from "@/types";
 export default function Footer() {
   return (
     <footer className="bg-neutral-900 text-neutral-300">
+      {/* Gradient top accent line */}
+      <div className="h-1 bg-gradient-to-r from-brand-500 via-teal-500 to-warm-400" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           {/* Brand */}
           <div>
             <Link href="/" className="inline-block mb-5">
-              <span className="text-2xl font-serif font-bold text-white">
+              <span className="text-2xl font-serif font-bold bg-clip-text text-transparent bg-gradient-to-r from-brand-400 to-teal-400">
                 Plantgen
               </span>
             </Link>

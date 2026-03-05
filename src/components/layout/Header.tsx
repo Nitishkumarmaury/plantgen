@@ -85,7 +85,7 @@ export default function Header() {
         }`}
       >
         {/* Announcement bar */}
-        <div className="hidden sm:block bg-neutral-900 text-white">
+        <div className="hidden sm:block bg-gradient-to-r from-brand-900 via-brand-800 to-teal-900 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center h-9 text-[11px] tracking-wide">
             <span className="opacity-80">Free delivery in Chandigarh & Tricity</span>
             <span className="mx-3 opacity-30">|</span>
@@ -124,7 +124,7 @@ export default function Header() {
                 <Link
                   key={link.href + link.label}
                   href={link.href}
-                  className="relative text-[13px] font-medium text-neutral-500 hover:text-neutral-900 transition-colors tracking-wide uppercase after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-neutral-900 after:transition-all hover:after:w-full"
+                  className="relative text-[13px] font-medium text-neutral-500 hover:text-brand-700 transition-colors tracking-wide uppercase after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-brand-600 after:transition-all hover:after:w-full"
                 >
                   {link.label}
                 </Link>
@@ -193,7 +193,7 @@ export default function Header() {
                   <motion.span
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="absolute top-1 right-1 min-w-[16px] h-[16px] bg-neutral-900 text-white text-[9px] rounded-full flex items-center justify-center font-bold px-1"
+                    className="absolute top-1 right-1 min-w-[16px] h-[16px] bg-gradient-to-r from-brand-500 to-teal-500 text-white text-[9px] rounded-full flex items-center justify-center font-bold px-1"
                   >
                     {count}
                   </motion.span>
@@ -225,7 +225,7 @@ export default function Header() {
                   />
                   <button
                     type="submit"
-                    className="px-6 py-3 bg-neutral-900 text-white text-sm font-medium rounded-full hover:bg-neutral-800 transition-colors"
+                    className="px-6 py-3 bg-gradient-to-r from-brand-600 to-brand-500 text-white text-sm font-medium rounded-full hover:from-brand-700 hover:to-brand-600 transition-all shadow-sm"
                   >
                     Search
                   </button>
@@ -259,7 +259,7 @@ export default function Header() {
             >
               {/* Header */}
               <div className="flex items-center justify-between p-5 border-b border-neutral-100">
-                <Link href="/" className="font-serif text-xl font-bold text-neutral-900" onClick={() => setMobileOpen(false)}>
+                <Link href="/" className="font-serif text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-teal-600" onClick={() => setMobileOpen(false)}>
                   Plantgen
                 </Link>
                 <button

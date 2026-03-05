@@ -56,7 +56,7 @@ function ScrollableProductRow({
           </div>
           <Link
             href={link}
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-neutral-900 hover:text-brand-700 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand-700 hover:text-brand-800 transition-colors"
           >
             View All
             <ArrowRight className="w-3.5 h-3.5" />
@@ -90,7 +90,7 @@ export default function FeaturedProducts() {
   const priceDrops = getPriceDropProducts().slice(0, 8);
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-neutral-50/50">
+    <section className="py-16 sm:py-20 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <ScrollableProductRow
           title="Bestsellers"

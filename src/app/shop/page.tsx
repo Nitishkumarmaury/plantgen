@@ -106,7 +106,7 @@ function ShopContent() {
                       onClick={() => setSelectedCategory(cat)}
                       className={`block w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
                         selectedCategory === cat
-                          ? "bg-neutral-100 text-neutral-900 font-medium"
+                          ? "bg-brand-50 text-brand-700 font-medium"
                           : "text-neutral-500 hover:bg-neutral-50 hover:text-neutral-800"
                       }`}
                     >
@@ -126,7 +126,7 @@ function ShopContent() {
                       onClick={() => setSelectedBudget(b)}
                       className={`block w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
                         selectedBudget === b
-                          ? "bg-neutral-100 text-neutral-900 font-medium"
+                          ? "bg-brand-50 text-brand-700 font-medium"
                           : "text-neutral-500 hover:bg-neutral-50 hover:text-neutral-800"
                       }`}
                     >
@@ -146,7 +146,7 @@ function ShopContent() {
                       onClick={() => setSelectedCare(c)}
                       className={`block w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
                         selectedCare === c
-                          ? "bg-neutral-100 text-neutral-900 font-medium"
+                          ? "bg-brand-50 text-brand-700 font-medium"
                           : "text-neutral-500 hover:bg-neutral-50 hover:text-neutral-800"
                       }`}
                     >
@@ -166,7 +166,7 @@ function ShopContent() {
                       onClick={() => setSelectedType(t)}
                       className={`block w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
                         selectedType === t
-                          ? "bg-neutral-100 text-neutral-900 font-medium"
+                          ? "bg-brand-50 text-brand-700 font-medium"
                           : "text-neutral-500 hover:bg-neutral-50 hover:text-neutral-800"
                       }`}
                     >
@@ -189,7 +189,7 @@ function ShopContent() {
                 <SlidersHorizontal className="w-4 h-4" />
                 Filters
                 {activeFilters > 0 && (
-                  <span className="w-5 h-5 bg-neutral-900 text-white text-[10px] rounded-full flex items-center justify-center">
+                  <span className="w-5 h-5 bg-brand-600 text-white text-[10px] rounded-full flex items-center justify-center">
                     {activeFilters}
                   </span>
                 )}

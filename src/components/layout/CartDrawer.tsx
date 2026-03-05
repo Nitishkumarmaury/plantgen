@@ -71,7 +71,7 @@ export default function CartDrawer() {
             <div className="flex-1 overflow-y-auto px-6 py-4">
               {items.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full text-center">
-                  <Gift className="w-16 h-16 text-neutral-200 mb-4" />
+                  <Gift className="w-16 h-16 text-brand-200 mb-4" />
                   <p className="text-neutral-600 font-medium mb-2">
                     Your gift bag is empty
                   </p>
@@ -81,7 +81,7 @@ export default function CartDrawer() {
                   <Link
                     href="/shop"
                     onClick={closeCart}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-neutral-900 text-white rounded-full text-sm font-medium hover:bg-neutral-800 transition-colors"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-brand-600 to-brand-500 text-white rounded-full text-sm font-medium hover:from-brand-700 hover:to-brand-600 transition-all shadow-sm"
                   >
                     Browse Gifts
                     <ArrowRight className="w-4 h-4" />
@@ -175,7 +175,7 @@ export default function CartDrawer() {
                 <Link
                   href="/checkout"
                   onClick={closeCart}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-colors"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-600 to-brand-500 text-white rounded-full font-medium hover:from-brand-700 hover:to-brand-600 transition-all shadow-sm"
                 >
                   Proceed to Checkout
                   <ArrowRight className="w-4 h-4" />

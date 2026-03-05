@@ -66,7 +66,7 @@ export default function ProductCard({ product, index = 0, priority = false }: Pr
             {/* Discount Badge - Top Left */}
             {discount > 0 && (
               <div className="absolute top-2 left-2 z-10">
-                <span className="inline-block px-2 py-0.5 bg-red-500 text-white text-[11px] font-bold rounded-sm">
+                <span className="inline-block px-2 py-0.5 bg-gradient-to-r from-coral-500 to-coral-600 text-white text-[11px] font-bold rounded-sm shadow-sm">
                   {discount}% OFF
                 </span>
               </div>
@@ -75,17 +75,17 @@ export default function ProductCard({ product, index = 0, priority = false }: Pr
             {/* Badges Row */}
             <div className="absolute top-2 right-2 z-10 flex flex-col gap-1">
               {product.bestSeller && (
-                <span className="inline-block px-2 py-0.5 bg-neutral-900 text-white text-[10px] font-bold rounded-sm">
+                <span className="inline-block px-2 py-0.5 bg-gradient-to-r from-warm-500 to-warm-600 text-white text-[10px] font-bold rounded-sm shadow-sm">
                   BESTSELLER
                 </span>
               )}
               {product.newArrival && (
-                <span className="inline-block px-2 py-0.5 bg-brand-700 text-white text-[10px] font-bold rounded-sm">
+                <span className="inline-block px-2 py-0.5 bg-gradient-to-r from-brand-600 to-teal-600 text-white text-[10px] font-bold rounded-sm shadow-sm">
                   NEW
                 </span>
               )}
               {product.priceDrop && (
-                <span className="inline-block px-2 py-0.5 bg-blue-600 text-white text-[10px] font-bold rounded-sm">
+                <span className="inline-block px-2 py-0.5 bg-gradient-to-r from-teal-500 to-teal-600 text-white text-[10px] font-bold rounded-sm shadow-sm">
                   PRICE DROP
                 </span>
               )}
@@ -154,7 +154,7 @@ export default function ProductCard({ product, index = 0, priority = false }: Pr
               </span>
             )}
             {discount > 0 && (
-              <span className="text-xs font-semibold text-brand-700">
+              <span className="text-xs font-semibold text-coral-500">
                 {discount}% off
               </span>
             )}
@@ -166,7 +166,7 @@ export default function ProductCard({ product, index = 0, priority = false }: Pr
           {/* Add to Cart */}
           <button
             onClick={() => addItem(product)}
-            className="mt-2 w-full flex items-center justify-center gap-1.5 py-2 bg-neutral-900 hover:bg-neutral-800 text-white text-xs sm:text-sm font-semibold rounded-lg active:scale-[0.97] transition-all"
+            className="mt-2 w-full flex items-center justify-center gap-1.5 py-2 bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-700 hover:to-brand-600 text-white text-xs sm:text-sm font-semibold rounded-lg active:scale-[0.97] transition-all shadow-sm hover:shadow-md"
           >
             <ShoppingCart className="w-3.5 h-3.5" />
             Add to Cart

@@ -113,13 +113,13 @@ export default function Hero() {
                 >
                   <Link
                     href={slide.ctaLink}
-                    className="inline-flex items-center px-7 sm:px-8 py-3 sm:py-3.5 bg-white text-neutral-900 text-sm sm:text-base font-semibold rounded-full hover:bg-neutral-100 transition-colors"
+                    className="inline-flex items-center px-7 sm:px-8 py-3 sm:py-3.5 bg-gradient-to-r from-brand-500 to-teal-500 text-white text-sm sm:text-base font-semibold rounded-full hover:from-brand-600 hover:to-teal-600 shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 transition-all duration-300"
                   >
                     {slide.cta}
                   </Link>
                   <Link
                     href="/about"
-                    className="inline-flex items-center px-6 py-3 sm:py-3.5 border border-white/40 text-white text-sm sm:text-base font-medium rounded-full hover:bg-white/10 transition-colors"
+                    className="inline-flex items-center px-6 py-3 sm:py-3.5 border border-white/40 text-white text-sm sm:text-base font-medium rounded-full hover:bg-white/10 hover:border-white/60 transition-all duration-300"
                   >
                     Our Story
                   </Link>
@@ -155,7 +155,7 @@ export default function Hero() {
                 setCurrent(i);
               }}
               className={`h-[3px] rounded-full transition-all duration-500 ${
-                i === current ? "bg-white w-8" : "bg-white/40 w-4 hover:bg-white/60"
+                i === current ? "bg-gradient-to-r from-brand-400 to-teal-400 w-8" : "bg-white/40 w-4 hover:bg-white/60"
               }`}
               aria-label={`Go to slide ${i + 1}`}
             />
@@ -164,21 +164,21 @@ export default function Hero() {
       </div>
 
       {/* Trust Strip */}
-      <div className="bg-neutral-900 text-white py-4">
+      <div className="bg-gradient-to-r from-brand-900 via-brand-800 to-teal-900 text-white py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center gap-6 sm:gap-12 lg:gap-20 text-[11px] sm:text-xs lg:text-sm font-medium overflow-x-auto">
-            <div className="flex items-center gap-2 whitespace-nowrap opacity-80">
-              <Truck className="w-4 h-4 flex-shrink-0" />
+            <div className="flex items-center gap-2 whitespace-nowrap text-brand-200">
+              <Truck className="w-4 h-4 flex-shrink-0 text-brand-300" />
               <span>Same Day Delivery</span>
             </div>
             <div className="w-[1px] h-4 bg-white/20 flex-shrink-0" />
-            <div className="flex items-center gap-2 whitespace-nowrap opacity-80">
-              <Banknote className="w-4 h-4 flex-shrink-0" />
+            <div className="flex items-center gap-2 whitespace-nowrap text-brand-200">
+              <Banknote className="w-4 h-4 flex-shrink-0 text-warm-400" />
               <span>Cash on Delivery</span>
             </div>
             <div className="w-[1px] h-4 bg-white/20 flex-shrink-0" />
-            <div className="flex items-center gap-2 whitespace-nowrap opacity-80">
-              <Gift className="w-4 h-4 flex-shrink-0" />
+            <div className="flex items-center gap-2 whitespace-nowrap text-brand-200">
+              <Gift className="w-4 h-4 flex-shrink-0 text-coral-300" />
               <span>Free Gift Wrapping</span>
             </div>
           </div>

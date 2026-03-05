@@ -47,8 +47,8 @@ function FAQItem({ faq, isOpen, toggle }: { faq: typeof faqs[0]; isOpen: boolean
           {faq.q}
         </span>
         <ChevronDown
-          className={`w-4 h-4 text-neutral-400 flex-shrink-0 transition-transform duration-200 ${
-            isOpen ? "rotate-180" : ""
+          className={`w-4 h-4 flex-shrink-0 transition-all duration-200 ${
+            isOpen ? "rotate-180 text-brand-600" : "text-neutral-400"
           }`}
         />
       </button>
@@ -75,10 +75,10 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-neutral-50">
+    <section className="py-16 sm:py-20 lg:py-24 bg-gradient-fresh">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn className="text-center mb-10 sm:mb-14">
-          <span className="text-xs font-semibold text-neutral-400 uppercase tracking-widest">
+          <span className="text-xs font-semibold text-teal-600 uppercase tracking-widest">
             Got Questions?
           </span>
           <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-neutral-900">

@@ -1,3 +1,5 @@
+"use server";
+
 const PEXELS_API_KEY = process.env.PEXELS_API_KEY || "";
 const PEXELS_SEARCH_URL = "https://api.pexels.com/v1/search";
 

@@ -2,23 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2e3e2e;
-  background-color: #faf8f5;
+  color: #1a1a1a;
+  background-color: #ffffff;
 }
 
-/* Custom scrollbar */
+/* Elegant scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -26,12 +24,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c7d4c7;
-  border-radius: 3px;
+  background: #d1d5db;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1b5a1;
+  background: #9ca3af;
 }
 
 /* Hide scrollbar for horizontal scroll containers */
@@ -45,6 +43,46 @@ body {
 
 /* Selection */
 ::selection {
-  background-color: #dceede;
-  color: #1a3b1e;
+  background-color: #dcfce7;
+  color: #14532d;
+}
+
+/* Serif headings */
+.font-serif {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+/* Premium glass effect */
+.glass {
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+}
+
+/* Premium button press effect */
+@layer utilities {
+  .btn-press {
+    @apply active:scale-[0.97] transition-transform duration-150;
+  }
+  
+  .hover-lift {
+    @apply hover:-translate-y-1 hover:shadow-lg transition-all duration-300;
+  }
+  
+  .hover-glow {
+    @apply hover:shadow-[0_0_20px_rgba(34,197,94,0.15)] transition-shadow duration-300;
+  }
+}
+
+/* Smooth image loading animation */
+img {
+  animation: fadeInImg 0.4s ease-out;
+}
+
+@keyframes fadeInImg {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

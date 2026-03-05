@@ -20,14 +20,6 @@ import {
 import Link from "next/link";
 import { format, addDays } from "date-fns";
 
-function generateOrderId(): string {
-  const date = format(new Date(), "yyyyMMdd");
-  const random = Math.floor(Math.random() * 10000)
-    .toString()
-    .padStart(4, "0");
-  return `PG-${date}-${random}`;
-}
-
 function getAvailableDates(): string[] {
   const dates: string[] = [];
   for (let i = 0; i < 7; i++) {
@@ -42,6 +34,7 @@ export default function CheckoutPage() {
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [orderError, setOrderError] = useState("");
   const [orderId, setOrderId] = useState("");
 
   const [formData, setFormData] = useState({
@@ -69,23 +62,23 @@ export default function CheckoutPage() {
       <div className="pt-24 pb-20 min-h-screen flex items-center">
         <div className="max-w-md mx-auto px-4 text-center">
           <FadeIn>
-            <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6">
-              <LogIn className="w-9 h-9 text-green-600" />
+            <div className="w-20 h-20 bg-brand-50 rounded-full flex items-center justify-center mx-auto mb-6">
+              <LogIn className="w-9 h-9 text-brand-700" />
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            <h1 className="text-2xl font-bold text-neutral-900 mb-2">
               Sign in to continue
             </h1>
-            <p className="text-gray-500 mb-2">
+            <p className="text-neutral-500 mb-2">
               Please login or create an account to place your order.
             </p>
             {items.length > 0 && (
-              <p className="text-sm text-gray-400 mb-6">
+              <p className="text-sm text-neutral-400 mb-6">
                 You have {items.length} item{items.length > 1 ? "s" : ""} in your cart
               </p>
             )}
             <button
               onClick={openAuthModal}
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-colors shadow-lg shadow-green-600/20"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-neutral-900 text-white font-semibold rounded-xl hover:bg-neutral-800 transition-colors shadow-lg shadow-neutral-900/10"
             >
               <Mail className="w-5 h-5" />
               Sign In / Sign Up
@@ -93,7 +86,7 @@ export default function CheckoutPage() {
             <div className="mt-6">
               <Link
                 href="/shop"
-                className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-green-600 transition-colors"
+                className="inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-neutral-900 transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Continue Shopping
@@ -126,18 +119,17 @@ export default function CheckoutPage() {
     if (!validate() || items.length === 0) return;
 
     setLoading(true);
-    const newOrderId = generateOrderId();
+    setOrderError("");
 
     try {
-      // Send order to API
+      // Send order to API (orderId is generated server-side)
       const response = await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          orderId: newOrderId,
-          userEmail: user?.email || "",
           ...formData,
           items: items.map((item) => ({
+            id: item.product.id,
             productId: item.product.id,
             name: item.product.name,
             quantity: item.quantity,
@@ -149,16 +141,20 @@ export default function CheckoutPage() {
       });
 
       if (response.ok) {
-        setOrderId(newOrderId);
+        const data = await response.json();
+        setOrderId(data.orderId || "");
         setSuccess(true);
         clearCart();
+      } else {
+        const data = await response.json().catch(() => ({}));
+        setOrderError(
+          data.error || "Something went wrong. Please try again."
+        );
       }
-    } catch (error) {
-      console.error("Order submission error:", error);
-      // Still show success for offline-friendly UX
-      setOrderId(newOrderId);
-      setSuccess(true);
-      clearCart();
+    } catch {
+      setOrderError(
+        "Network error — please check your connection and try again."
+      );
     } finally {
       setLoading(false);
     }
@@ -180,36 +176,36 @@ export default function CheckoutPage() {
       <div className="pt-24 pb-20 min-h-screen flex items-center">
         <div className="max-w-lg mx-auto px-4 text-center">
           <FadeIn>
-            <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6">
-              <CheckCircle2 className="w-10 h-10 text-green-600" />
+            <div className="w-20 h-20 bg-brand-50 rounded-full flex items-center justify-center mx-auto mb-6">
+              <CheckCircle2 className="w-10 h-10 text-brand-700" />
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            <h1 className="text-2xl font-bold text-neutral-900 mb-2">
               Order Placed Successfully! 🌿
             </h1>
-            <p className="text-gray-500 mb-6">
+            <p className="text-neutral-500 mb-6">
               Thank you for choosing Plantgen. Your gift will bring someone joy!
             </p>
-            <div className="bg-gray-50 rounded-xl p-6 mb-8 text-left">
+            <div className="bg-neutral-50 rounded-xl p-6 mb-8 text-left">
               <div className="space-y-3">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Order ID</span>
-                  <span className="font-semibold text-gray-900">{orderId}</span>
+                  <span className="text-neutral-500">Order ID</span>
+                  <span className="font-semibold text-neutral-900">{orderId}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Delivery Date</span>
-                  <span className="font-medium text-gray-800">
+                  <span className="text-neutral-500">Delivery Date</span>
+                  <span className="font-medium text-neutral-800">
                     {formData.deliveryDate}
                   </span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Time Slot</span>
-                  <span className="font-medium text-gray-800">
+                  <span className="text-neutral-500">Time Slot</span>
+                  <span className="font-medium text-neutral-800">
                     {TIME_SLOTS.find((s) => s.value === formData.timeSlot)?.label}
                   </span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Payment</span>
-                  <span className="font-medium text-gray-800">
+                  <span className="text-neutral-500">Payment</span>
+                  <span className="font-medium text-neutral-800">
                     Cash on Delivery
                   </span>
                 </div>
@@ -218,7 +214,7 @@ export default function CheckoutPage() {
             <div className="space-y-3">
               <Link
                 href="/shop"
-                className="block w-full px-6 py-3 bg-green-600 text-white font-medium rounded-xl hover:bg-green-700 transition-colors"
+                className="block w-full px-6 py-3 bg-neutral-900 text-white font-medium rounded-xl hover:bg-neutral-800 transition-colors"
               >
                 Continue Shopping
               </Link>
@@ -226,7 +222,7 @@ export default function CheckoutPage() {
                 href={`https://wa.me/917888888888?text=Hi, I just placed order ${orderId}. Confirming my order!`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full px-6 py-3 bg-green-600 text-white font-medium rounded-xl hover:bg-green-700 transition-colors"
+                className="block w-full px-6 py-3 bg-neutral-900 text-white font-medium rounded-xl hover:bg-neutral-800 transition-colors"
               >
                 Confirm on WhatsApp
               </a>
@@ -242,16 +238,16 @@ export default function CheckoutPage() {
     return (
       <div className="pt-24 pb-20 min-h-screen flex items-center">
         <div className="max-w-lg mx-auto px-4 text-center">
-          <ShoppingBag className="w-16 h-16 text-gray-200 mx-auto mb-4" />
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">
+          <ShoppingBag className="w-16 h-16 text-neutral-200 mx-auto mb-4" />
+          <h1 className="text-2xl font-bold text-neutral-900 mb-2">
             Your cart is empty
           </h1>
-          <p className="text-gray-500 mb-6">
+          <p className="text-neutral-500 mb-6">
             Add some plant gifts before checking out
           </p>
           <Link
             href="/shop"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white font-medium rounded-xl hover:bg-green-700 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white font-medium rounded-xl hover:bg-neutral-800 transition-colors"
           >
             Browse Gifts
           </Link>
@@ -266,16 +262,16 @@ export default function CheckoutPage() {
         <FadeIn>
           <Link
             href="/shop"
-            className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-green-600 transition-colors mb-6"
+            className="inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-neutral-900 transition-colors mb-6"
           >
             <ArrowLeft className="w-4 h-4" />
             Continue Shopping
           </Link>
 
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-2xl sm:text-3xl font-bold text-neutral-900 mb-2">
             Checkout
           </h1>
-          <p className="text-gray-500 mb-10">
+          <p className="text-neutral-500 mb-10">
             Cash on Delivery — Chandigarh & Tricity only
           </p>
         </FadeIn>
@@ -286,14 +282,14 @@ export default function CheckoutPage() {
             <FadeIn delay={0.05}>
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Contact Info */}
-                <div className="bg-white rounded-2xl p-6 border border-gray-100">
-                  <h2 className="text-lg font-semibold text-gray-900 mb-5 flex items-center gap-2">
-                    <User className="w-5 h-5 text-green-500" />
+                <div className="bg-white rounded-2xl p-6 border border-neutral-100">
+                  <h2 className="text-lg font-semibold text-neutral-900 mb-5 flex items-center gap-2">
+                    <User className="w-5 h-5 text-brand-700" />
                     Contact Details
                   </h2>
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-medium text-gray-600 mb-1.5">
+                      <label className="block text-xs font-medium text-neutral-600 mb-1.5">
                         Full Name *
                       </label>
                       <input
@@ -301,8 +297,8 @@ export default function CheckoutPage() {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className={`w-full px-4 py-3 bg-gray-50 border rounded-xl text-sm focus:ring-2 focus:ring-green-200 focus:border-green-400 transition-all ${
-                          errors.name ? "border-red-300" : "border-gray-200"
+                        className={`w-full px-4 py-3 bg-neutral-50 border rounded-xl text-sm focus:ring-2 focus:ring-neutral-200 focus:border-neutral-400 transition-all ${
+                          errors.name ? "border-red-300" : "border-neutral-200"
                         }`}
                         placeholder="Enter your name"
                       />
@@ -311,7 +307,7 @@ export default function CheckoutPage() {
                       )}
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-gray-600 mb-1.5">
+                      <label className="block text-xs font-medium text-neutral-600 mb-1.5">
                         Phone Number *
                       </label>
                       <input
@@ -319,8 +315,8 @@ export default function CheckoutPage() {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className={`w-full px-4 py-3 bg-gray-50 border rounded-xl text-sm focus:ring-2 focus:ring-green-200 focus:border-green-400 transition-all ${
-                          errors.phone ? "border-red-300" : "border-gray-200"
+                        className={`w-full px-4 py-3 bg-neutral-50 border rounded-xl text-sm focus:ring-2 focus:ring-neutral-200 focus:border-neutral-400 transition-all ${
+                          errors.phone ? "border-red-300" : "border-neutral-200"
                         }`}
                         placeholder="10-digit phone number"
                         maxLength={10}
@@ -330,7 +326,7 @@ export default function CheckoutPage() {
                       )}
                     </div>
                     <div className="sm:col-span-2">
-                      <label className="block text-xs font-medium text-gray-600 mb-1.5">
+                      <label className="block text-xs font-medium text-neutral-600 mb-1.5">
                         Alternate Phone (optional)
                       </label>
                       <input
@@ -338,7 +334,7 @@ export default function CheckoutPage() {
                         name="alternatePhone"
                         value={formData.alternatePhone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-green-200 focus:border-green-400 transition-all"
+                        className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-sm focus:ring-2 focus:ring-neutral-200 focus:border-neutral-400 transition-all"
                         placeholder="Alternate contact number"
                         maxLength={10}
                       />
@@ -347,14 +343,14 @@ export default function CheckoutPage() {
                 </div>
 
                 {/* Delivery Address */}
-                <div className="bg-white rounded-2xl p-6 border border-gray-100">
-                  <h2 className="text-lg font-semibold text-gray-900 mb-5 flex items-center gap-2">
-                    <MapPin className="w-5 h-5 text-green-500" />
+                <div className="bg-white rounded-2xl p-6 border border-neutral-100">
+                  <h2 className="text-lg font-semibold text-neutral-900 mb-5 flex items-center gap-2">
+                    <MapPin className="w-5 h-5 text-brand-700" />
                     Delivery Address
                   </h2>
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-xs font-medium text-gray-600 mb-1.5">
+                      <label className="block text-xs font-medium text-neutral-600 mb-1.5">
                         Full Address *
                       </label>
                       <textarea
@@ -362,8 +358,8 @@ export default function CheckoutPage() {
                         value={formData.address}
                         onChange={handleChange}
                         rows={3}
-                        className={`w-full px-4 py-3 bg-gray-50 border rounded-xl text-sm focus:ring-2 focus:ring-green-200 focus:border-green-400 transition-all resize-none ${
-                          errors.address ? "border-red-300" : "border-gray-200"
+                        className={`w-full px-4 py-3 bg-neutral-50 border rounded-xl text-sm focus:ring-2 focus:ring-neutral-200 focus:border-neutral-400 transition-all resize-none ${
+                          errors.address ? "border-red-300" : "border-neutral-200"
                         }`}
                         placeholder="House/flat number, street, sector, city"
                       />
@@ -372,7 +368,7 @@ export default function CheckoutPage() {
                       )}
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-gray-600 mb-1.5">
+                      <label className="block text-xs font-medium text-neutral-600 mb-1.5">
                         Landmark (optional)
                       </label>
                       <input
@@ -380,7 +376,7 @@ export default function CheckoutPage() {
                         name="landmark"
                         value={formData.landmark}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-green-200 focus:border-green-400 transition-all"
+                        className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-sm focus:ring-2 focus:ring-neutral-200 focus:border-neutral-400 transition-all"
                         placeholder="Nearby landmark"
                       />
                     </div>
@@ -388,22 +384,22 @@ export default function CheckoutPage() {
                 </div>
 
                 {/* Delivery Schedule */}
-                <div className="bg-white rounded-2xl p-6 border border-gray-100">
-                  <h2 className="text-lg font-semibold text-gray-900 mb-5 flex items-center gap-2">
-                    <Calendar className="w-5 h-5 text-green-500" />
+                <div className="bg-white rounded-2xl p-6 border border-neutral-100">
+                  <h2 className="text-lg font-semibold text-neutral-900 mb-5 flex items-center gap-2">
+                    <Calendar className="w-5 h-5 text-brand-700" />
                     Delivery Schedule
                   </h2>
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-medium text-gray-600 mb-1.5">
+                      <label className="block text-xs font-medium text-neutral-600 mb-1.5">
                         Delivery Date *
                       </label>
                       <select
                         name="deliveryDate"
                         value={formData.deliveryDate}
                         onChange={handleChange}
-                        className={`w-full px-4 py-3 bg-gray-50 border rounded-xl text-sm focus:ring-2 focus:ring-green-200 focus:border-green-400 transition-all ${
-                          errors.deliveryDate ? "border-red-300" : "border-gray-200"
+                        className={`w-full px-4 py-3 bg-neutral-50 border rounded-xl text-sm focus:ring-2 focus:ring-neutral-200 focus:border-neutral-400 transition-all ${
+                          errors.deliveryDate ? "border-red-300" : "border-neutral-200"
                         }`}
                       >
                         <option value="">Select date</option>
@@ -421,15 +417,15 @@ export default function CheckoutPage() {
                       )}
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-gray-600 mb-1.5">
+                      <label className="block text-xs font-medium text-neutral-600 mb-1.5">
                         Time Slot *
                       </label>
                       <select
                         name="timeSlot"
                         value={formData.timeSlot}
                         onChange={handleChange}
-                        className={`w-full px-4 py-3 bg-gray-50 border rounded-xl text-sm focus:ring-2 focus:ring-green-200 focus:border-green-400 transition-all ${
-                          errors.timeSlot ? "border-red-300" : "border-gray-200"
+                        className={`w-full px-4 py-3 bg-neutral-50 border rounded-xl text-sm focus:ring-2 focus:ring-neutral-200 focus:border-neutral-400 transition-all ${
+                          errors.timeSlot ? "border-red-300" : "border-neutral-200"
                         }`}
                       >
                         <option value="">Select time</option>
@@ -449,9 +445,9 @@ export default function CheckoutPage() {
                 </div>
 
                 {/* Gift Message */}
-                <div className="bg-white rounded-2xl p-6 border border-gray-100">
-                  <h2 className="text-lg font-semibold text-gray-900 mb-5 flex items-center gap-2">
-                    <MessageSquare className="w-5 h-5 text-green-500" />
+                <div className="bg-white rounded-2xl p-6 border border-neutral-100">
+                  <h2 className="text-lg font-semibold text-neutral-900 mb-5 flex items-center gap-2">
+                    <MessageSquare className="w-5 h-5 text-brand-700" />
                     Gift Note (optional)
                   </h2>
                   <textarea
@@ -459,7 +455,7 @@ export default function CheckoutPage() {
                     value={formData.messageNote}
                     onChange={handleChange}
                     rows={3}
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-green-200 focus:border-green-400 transition-all resize-none"
+                    className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-sm focus:ring-2 focus:ring-neutral-200 focus:border-neutral-400 transition-all resize-none"
                     placeholder="Write a personal message for the gift recipient..."
                     maxLength={300}
                   />
@@ -467,10 +463,15 @@ export default function CheckoutPage() {
 
                 {/* Submit (mobile) */}
                 <div className="lg:hidden">
+                  {orderError && (
+                    <div className="mb-4 p-4 bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl">
+                      {orderError}
+                    </div>
+                  )}
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 disabled:opacity-50 transition-all"
+                    className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-neutral-900 text-white font-semibold rounded-xl hover:bg-neutral-800 disabled:opacity-50 transition-all"
                   >
                     {loading ? (
                       <>
@@ -489,8 +490,8 @@ export default function CheckoutPage() {
           {/* Order Summary */}
           <div className="lg:col-span-1">
             <FadeIn delay={0.1}>
-              <div className="sticky top-24 bg-white rounded-2xl p-6 border border-gray-100">
-                <h2 className="text-lg font-semibold text-gray-900 mb-5">
+              <div className="sticky top-24 bg-white rounded-2xl p-6 border border-neutral-100">
+                <h2 className="text-lg font-semibold text-neutral-900 mb-5">
                   Order Summary
                 </h2>
 
@@ -501,39 +502,39 @@ export default function CheckoutPage() {
                       className="flex justify-between text-sm"
                     >
                       <div className="flex-1 min-w-0">
-                        <p className="text-gray-700 truncate">
+                        <p className="text-neutral-700 truncate">
                           {item.product.name}
                         </p>
-                        <p className="text-xs text-gray-400">
+                        <p className="text-xs text-neutral-400">
                           Qty: {item.quantity}
                         </p>
                       </div>
-                      <span className="text-gray-800 font-medium ml-3">
+                      <span className="text-neutral-800 font-medium ml-3">
                         ₹{item.product.price * item.quantity}
                       </span>
                     </div>
                   ))}
                 </div>
 
-                <div className="border-t border-gray-100 pt-4 space-y-2">
+                <div className="border-t border-neutral-100 pt-4 space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-500">Subtotal</span>
-                    <span className="text-gray-800">₹{total}</span>
+                    <span className="text-neutral-500">Subtotal</span>
+                    <span className="text-neutral-800">₹{total}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-500">Delivery</span>
-                    <span className="text-green-600 font-medium">Free</span>
+                    <span className="text-neutral-500">Delivery</span>
+                    <span className="text-brand-700 font-medium">Free</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-500">Payment</span>
-                    <span className="text-gray-600">COD</span>
+                    <span className="text-neutral-500">Payment</span>
+                    <span className="text-neutral-600">COD</span>
                   </div>
                 </div>
 
-                <div className="border-t border-gray-100 mt-4 pt-4">
+                <div className="border-t border-neutral-100 mt-4 pt-4">
                   <div className="flex justify-between">
-                    <span className="font-semibold text-gray-900">Total</span>
-                    <span className="text-xl font-bold text-gray-900">
+                    <span className="font-semibold text-neutral-900">Total</span>
+                    <span className="text-xl font-bold text-neutral-900">
                       ₹{total}
                     </span>
                   </div>
@@ -544,11 +545,15 @@ export default function CheckoutPage() {
                   type="button"
                   onClick={(e) => {
                     e.preventDefault();
-                    const form = document.querySelector("form");
-                    form?.requestSubmit();
+                    try {
+                      const form = document.querySelector("form");
+                      form?.requestSubmit();
+                    } catch {
+                      // Form validation may throw
+                    }
                   }}
                   disabled={loading}
-                  className="hidden lg:flex w-full items-center justify-center gap-2 mt-6 px-6 py-4 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 disabled:opacity-50 transition-all"
+                  className="hidden lg:flex w-full items-center justify-center gap-2 mt-6 px-6 py-4 bg-neutral-900 text-white font-semibold rounded-xl hover:bg-neutral-800 disabled:opacity-50 transition-all"
                 >
                   {loading ? (
                     <>
@@ -560,7 +565,7 @@ export default function CheckoutPage() {
                   )}
                 </button>
 
-                <p className="text-xs text-gray-400 mt-4 text-center">
+                <p className="text-xs text-neutral-400 mt-4 text-center">
                   🌿 Available in Chandigarh & Tricity only
                 </p>
               </div>

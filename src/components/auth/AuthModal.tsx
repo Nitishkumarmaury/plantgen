@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Leaf, Loader2, Mail, Lock, Eye, EyeOff, ArrowLeft } from "lucide-react";
+import { X, Loader2, Mail, Lock, Eye, EyeOff, ArrowLeft } from "lucide-react";
 import { useUserAuth } from "@/context/UserAuthContext";
 
 type AuthView = "login" | "register" | "reset";
@@ -151,10 +151,10 @@ export default function AuthModal() {
               </button>
 
               <div className="text-center">
-                <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <Leaf className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-neutral-900 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <span className="text-white font-serif font-bold text-lg">P</span>
                 </div>
-                <h2 className="text-xl font-bold text-gray-900">
+                <h2 className="text-xl font-bold text-neutral-900">
                   {view === "login" && "Welcome back"}
                   {view === "register" && "Create account"}
                   {view === "reset" && "Reset password"}
@@ -187,7 +187,7 @@ export default function AuthModal() {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-green-200 focus:border-green-400 transition-all"
+                      className="w-full pl-10 pr-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-sm focus:ring-2 focus:ring-neutral-200 focus:border-neutral-400 transition-all"
                       placeholder="you@example.com"
                       required
                       autoFocus
@@ -204,7 +204,7 @@ export default function AuthModal() {
                       type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full pl-10 pr-10 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-green-200 focus:border-green-400 transition-all"
+                      className="w-full pl-10 pr-10 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-sm focus:ring-2 focus:ring-neutral-200 focus:border-neutral-400 transition-all"
                       placeholder="••••••••"
                       required
                     />
@@ -222,7 +222,7 @@ export default function AuthModal() {
                   <button
                     type="button"
                     onClick={() => switchView("reset")}
-                    className="text-xs text-green-600 hover:text-green-700 font-medium"
+                    className="text-xs text-neutral-600 hover:text-neutral-900 font-medium"
                   >
                     Forgot password?
                   </button>
@@ -231,7 +231,7 @@ export default function AuthModal() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 disabled:opacity-50 transition-all flex items-center justify-center gap-2"
+                  className="w-full py-3 bg-neutral-900 text-white font-semibold rounded-xl hover:bg-neutral-800 disabled:opacity-50 transition-all flex items-center justify-center gap-2"
                 >
                   {loading && <Loader2 className="w-4 h-4 animate-spin" />}
                   Sign In
@@ -242,7 +242,7 @@ export default function AuthModal() {
                   <button
                     type="button"
                     onClick={() => switchView("register")}
-                    className="text-green-600 hover:text-green-700 font-semibold"
+                    className="text-neutral-900 hover:text-brand-700 font-semibold"
                   >
                     Sign Up
                   </button>
@@ -263,7 +263,7 @@ export default function AuthModal() {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-green-200 focus:border-green-400 transition-all"
+                      className="w-full pl-10 pr-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-sm focus:ring-2 focus:ring-neutral-200 focus:border-neutral-400 transition-all"
                       placeholder="you@example.com"
                       required
                       autoFocus
@@ -280,7 +280,7 @@ export default function AuthModal() {
                       type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full pl-10 pr-10 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-green-200 focus:border-green-400 transition-all"
+                      className="w-full pl-10 pr-10 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-sm focus:ring-2 focus:ring-neutral-200 focus:border-neutral-400 transition-all"
                       placeholder="At least 6 characters"
                       required
                       minLength={6}
@@ -304,7 +304,7 @@ export default function AuthModal() {
                       type="password"
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-green-200 focus:border-green-400 transition-all"
+                      className="w-full pl-10 pr-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-sm focus:ring-2 focus:ring-neutral-200 focus:border-neutral-400 transition-all"
                       placeholder="••••••••"
                       required
                     />
@@ -314,7 +314,7 @@ export default function AuthModal() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 disabled:opacity-50 transition-all flex items-center justify-center gap-2"
+                  className="w-full py-3 bg-neutral-900 text-white font-semibold rounded-xl hover:bg-neutral-800 disabled:opacity-50 transition-all flex items-center justify-center gap-2"
                 >
                   {loading && <Loader2 className="w-4 h-4 animate-spin" />}
                   Create Account
@@ -325,7 +325,7 @@ export default function AuthModal() {
                   <button
                     type="button"
                     onClick={() => switchView("login")}
-                    className="text-green-600 hover:text-green-700 font-semibold"
+                    className="text-neutral-900 hover:text-brand-700 font-semibold"
                   >
                     Sign In
                   </button>
@@ -338,15 +338,15 @@ export default function AuthModal() {
               <div className="px-6 pb-6">
                 {resetSent ? (
                   <div className="text-center py-4">
-                    <div className="w-14 h-14 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Mail className="w-7 h-7 text-green-600" />
+                    <div className="w-14 h-14 bg-brand-50 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Mail className="w-7 h-7 text-brand-700" />
                     </div>
                     <p className="text-sm text-gray-600 mb-4">
                       Password reset link sent to <strong>{email}</strong>. Check your inbox.
                     </p>
                     <button
                       onClick={() => switchView("login")}
-                      className="text-sm text-green-600 hover:text-green-700 font-semibold"
+                      className="text-sm text-neutral-900 hover:text-brand-700 font-semibold"
                     >
                       Back to Sign In
                     </button>
@@ -371,7 +371,7 @@ export default function AuthModal() {
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-green-200 focus:border-green-400 transition-all"
+                          className="w-full pl-10 pr-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-sm focus:ring-2 focus:ring-neutral-200 focus:border-neutral-400 transition-all"
                           placeholder="you@example.com"
                           required
                           autoFocus
@@ -381,7 +381,7 @@ export default function AuthModal() {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 disabled:opacity-50 transition-all flex items-center justify-center gap-2"
+                      className="w-full py-3 bg-neutral-900 text-white font-semibold rounded-xl hover:bg-neutral-800 disabled:opacity-50 transition-all flex items-center justify-center gap-2"
                     >
                       {loading && <Loader2 className="w-4 h-4 animate-spin" />}
                       Send Reset Link

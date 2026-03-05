@@ -62,6 +62,11 @@ export function subscribeToProducts(callback: (products: Product[]) => void) {
       callback(
         snapshot.docs.map((d) => ({ ...d.data(), id: d.id } as Product))
       );
+    },
+    (error) => {
+      console.warn("Firestore subscription error:", error);
+      // Return empty so the caller falls back to static data
+      callback([]);
     }
   );
 }

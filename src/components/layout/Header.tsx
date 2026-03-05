@@ -3,31 +3,30 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingCart, Menu, X, Leaf, Search, Phone, UserCircle, LogOut } from "lucide-react";
+import { ShoppingCart, Menu, X, Search, Phone, UserCircle, LogOut } from "lucide-react";
 import { useCartStore } from "@/store/cart";
 import { useUserAuth } from "@/context/UserAuthContext";
 import { useRouter } from "next/navigation";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/shop", label: "All Plants" },
-  { href: "/shop?category=Birthday", label: "Birthday" },
-  { href: "/shop?category=Corporate", label: "Corporate" },
-  { href: "/shop?category=Festive", label: "Festive" },
+  { href: "/shop", label: "Plants" },
+  { href: "/shop?search=birthday", label: "Birthday" },
+  { href: "/shop?category=Corporate+Gifts", label: "Corporate" },
+  { href: "/shop?search=festive", label: "Festive" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
 const mobileCategories = [
   { href: "/shop", label: "All Plants" },
-  { href: "/shop?category=Birthday", label: "Birthday Gifts" },
-  { href: "/shop?category=Anniversary", label: "Anniversary" },
-  { href: "/shop?category=Corporate", label: "Corporate Gifting" },
-  { href: "/shop?category=Festive", label: "Festive" },
-  { href: "/shop?category=Housewarming", label: "Housewarming" },
-  { href: "/shop?category=Get+Well+Soon", label: "Get Well Soon" },
-  { href: "/shop?category=Thank+You", label: "Thank You" },
-  { href: "/shop?category=Welcome+Kit", label: "Welcome Kit" },
+  { href: "/shop?search=birthday", label: "Birthday Gifts" },
+  { href: "/shop?category=Corporate+Gifts", label: "Corporate Gifting" },
+  { href: "/shop?search=festive", label: "Festive Plants" },
+  { href: "/shop?category=Indoor+Plants", label: "Indoor Plants" },
+  { href: "/shop?category=Flowering+Plants", label: "Flowering Plants" },
+  { href: "/shop?category=Desk+Plants", label: "Desk Plants" },
+  { href: "/shop?category=Succulents", label: "Succulents" },
+  { href: "/shop?category=Herbs", label: "Herbs" },
 ];
 
 export default function Header() {
@@ -55,6 +54,18 @@ export default function Header() {
 
   const count = mounted ? totalItems() : 0;
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
@@ -67,71 +78,69 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-white shadow-sm"
+            ? "bg-white/95 glass shadow-[0_1px_0_0_rgba(0,0,0,0.05)]"
             : "bg-white"
         }`}
       >
-        {/* Top bar */}
-        <div className="hidden sm:block bg-green-700 text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-8 text-[11px]">
-            <span>🌿 Delivering love through plants across Chandigarh & Tricity</span>
-            <div className="flex items-center gap-4">
-              <a href="tel:+919876543210" className="flex items-center gap-1 hover:text-green-200 transition-colors">
-                <Phone className="w-3 h-3" />
-                +91 98765 43210
-              </a>
-            </div>
+        {/* Announcement bar */}
+        <div className="hidden sm:block bg-neutral-900 text-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center h-9 text-[11px] tracking-wide">
+            <span className="opacity-80">Free delivery in Chandigarh & Tricity</span>
+            <span className="mx-3 opacity-30">|</span>
+            <span className="opacity-80">Cash on Delivery Available</span>
+            <span className="mx-3 opacity-30">|</span>
+            <a href="tel:+917888888888" className="flex items-center gap-1 hover:opacity-100 opacity-80 transition-opacity">
+              <Phone className="w-3 h-3" />
+              +91 78888 88888
+            </a>
           </div>
         </div>
 
         {/* Main header */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14 sm:h-16">
-            {/* Mobile menu + Logo */}
-            <div className="flex items-center gap-2">
+          <div className="flex items-center justify-between h-16 lg:h-[72px]">
+            {/* Left: Menu + Logo */}
+            <div className="flex items-center gap-3">
               <button
-                className="lg:hidden p-1.5 -ml-1.5 text-gray-700"
+                className="lg:hidden p-1.5 -ml-1.5 text-neutral-700 hover:text-neutral-900 transition-colors"
                 onClick={() => setMobileOpen(true)}
                 aria-label="Open menu"
               >
                 <Menu className="w-5 h-5" />
               </button>
 
-              <Link href="/" className="flex items-center gap-1.5 group">
-                <Leaf className="w-6 h-6 text-green-600" />
-                <span className="text-lg sm:text-xl font-bold text-gray-900 tracking-tight">
+              <Link href="/" className="flex items-center gap-2 group">
+                <span className="text-xl sm:text-2xl font-serif font-bold text-neutral-900 tracking-tight">
                   Plantgen
                 </span>
               </Link>
             </div>
 
-            {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-6">
+            {/* Center: Desktop Nav */}
+            <nav className="hidden lg:flex items-center gap-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.href + link.label}
                   href={link.href}
-                  className="text-sm font-medium text-gray-700 hover:text-green-600 transition-colors whitespace-nowrap"
+                  className="relative text-[13px] font-medium text-neutral-500 hover:text-neutral-900 transition-colors tracking-wide uppercase after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-neutral-900 after:transition-all hover:after:w-full"
                 >
                   {link.label}
                 </Link>
               ))}
             </nav>
 
-            {/* Actions */}
-            <div className="flex items-center gap-1 sm:gap-2">
-              {/* Search */}
+            {/* Right: Actions */}
+            <div className="flex items-center gap-0.5 sm:gap-1">
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
-                className="p-2 text-gray-600 hover:text-green-600 transition-colors"
+                className="p-2.5 text-neutral-500 hover:text-neutral-900 transition-colors"
                 aria-label="Search"
               >
-                <Search className="w-5 h-5" />
+                <Search className="w-[18px] h-[18px]" />
               </button>
 
-              {/* User */}
               <div className="relative">
                 <button
                   onClick={(e) => {
@@ -142,24 +151,23 @@ export default function Header() {
                       openAuthModal();
                     }
                   }}
-                  className="p-2 text-gray-600 hover:text-green-600 transition-colors"
+                  className="p-2.5 text-neutral-500 hover:text-neutral-900 transition-colors"
                   aria-label={user ? "Account menu" : "Sign in"}
                 >
-                  <UserCircle className={`w-5 h-5 ${user ? "text-green-600" : ""}`} />
+                  <UserCircle className={`w-[18px] h-[18px] ${user ? "text-brand-600" : ""}`} />
                 </button>
-                {/* User dropdown */}
                 <AnimatePresence>
                   {userMenuOpen && user && (
                     <motion.div
-                      initial={{ opacity: 0, y: 4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 4 }}
+                      initial={{ opacity: 0, y: 4, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 4, scale: 0.95 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute right-0 top-full mt-1 w-56 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden z-50"
+                      className="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-xl border border-neutral-100 overflow-hidden z-50"
                     >
-                      <div className="px-4 py-3 border-b border-gray-100">
-                        <p className="text-xs text-gray-400">Signed in as</p>
-                        <p className="text-sm font-medium text-gray-900 truncate">
+                      <div className="px-4 py-3 border-b border-neutral-100 bg-neutral-50">
+                        <p className="text-[10px] uppercase tracking-wider text-neutral-400 font-medium">Account</p>
+                        <p className="text-sm font-medium text-neutral-900 truncate mt-0.5">
                           {user.email}
                         </p>
                       </div>
@@ -175,18 +183,17 @@ export default function Header() {
                 </AnimatePresence>
               </div>
 
-              {/* Cart */}
               <button
                 onClick={openCart}
-                className="relative p-2 text-gray-600 hover:text-green-600 transition-colors"
+                className="relative p-2.5 text-neutral-500 hover:text-neutral-900 transition-colors"
                 aria-label="Open cart"
               >
-                <ShoppingCart className="w-5 h-5" />
+                <ShoppingCart className="w-[18px] h-[18px]" />
                 {count > 0 && (
                   <motion.span
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] bg-green-600 text-white text-[10px] rounded-full flex items-center justify-center font-bold px-1"
+                    className="absolute top-1 right-1 min-w-[16px] h-[16px] bg-neutral-900 text-white text-[9px] rounded-full flex items-center justify-center font-bold px-1"
                   >
                     {count}
                   </motion.span>
@@ -204,21 +211,21 @@ export default function Header() {
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="border-t border-gray-100 overflow-hidden"
+              className="border-t border-neutral-100 overflow-hidden"
             >
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-                <form onSubmit={handleSearch} className="flex gap-2">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <form onSubmit={handleSearch} className="flex gap-2 max-w-2xl mx-auto">
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search for plants, occasions..."
-                    className="flex-1 px-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
+                    placeholder="Search for plants, categories..."
+                    className="flex-1 px-5 py-3 bg-neutral-50 border border-neutral-200 rounded-full text-sm focus:outline-none focus:border-neutral-400 focus:ring-0 placeholder:text-neutral-400"
                     autoFocus
                   />
                   <button
                     type="submit"
-                    className="px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-lg hover:bg-green-700 transition-colors"
+                    className="px-6 py-3 bg-neutral-900 text-white text-sm font-medium rounded-full hover:bg-neutral-800 transition-colors"
                   >
                     Search
                   </button>
@@ -229,8 +236,8 @@ export default function Header() {
         </AnimatePresence>
       </header>
 
-      {/* Spacer for fixed header */}
-      <div className="h-14 sm:h-24" />
+      {/* Spacer */}
+      <div className="h-16 sm:h-[100px] lg:h-[108px]" />
 
       {/* Mobile Menu */}
       <AnimatePresence>
@@ -240,7 +247,7 @@ export default function Header() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/40 z-50 lg:hidden"
+              className="fixed inset-0 bg-black/50 z-50 lg:hidden"
               onClick={() => setMobileOpen(false)}
             />
             <motion.div
@@ -248,34 +255,33 @@ export default function Header() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="fixed top-0 left-0 bottom-0 w-[280px] bg-white z-50 lg:hidden shadow-xl overflow-y-auto"
+              className="fixed top-0 left-0 bottom-0 w-[300px] bg-white z-50 lg:hidden shadow-2xl overflow-y-auto"
             >
               {/* Header */}
-              <div className="flex items-center justify-between p-4 border-b border-gray-100">
-                <Link href="/" className="flex items-center gap-1.5" onClick={() => setMobileOpen(false)}>
-                  <Leaf className="w-5 h-5 text-green-600" />
-                  <span className="text-lg font-bold text-gray-900">Plantgen</span>
+              <div className="flex items-center justify-between p-5 border-b border-neutral-100">
+                <Link href="/" className="font-serif text-xl font-bold text-neutral-900" onClick={() => setMobileOpen(false)}>
+                  Plantgen
                 </Link>
                 <button
                   onClick={() => setMobileOpen(false)}
-                  className="p-1.5 text-gray-500 hover:text-gray-700"
+                  className="p-1.5 text-neutral-400 hover:text-neutral-700 transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
               {/* Categories */}
-              <div className="p-4">
-                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2">
-                  Shop by Occasion
+              <div className="p-5">
+                <p className="text-[10px] font-semibold text-neutral-400 uppercase tracking-widest mb-3">
+                  Shop by Category
                 </p>
-                <nav className="flex flex-col">
+                <nav className="flex flex-col -mx-2">
                   {mobileCategories.map((link) => (
                     <Link
                       key={link.href + link.label}
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
-                      className="px-3 py-2.5 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700 rounded-lg transition-colors font-medium"
+                      className="px-3 py-2.5 text-[15px] text-neutral-700 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -284,25 +290,25 @@ export default function Header() {
               </div>
 
               {/* Links */}
-              <div className="p-4 border-t border-gray-100">
-                <nav className="flex flex-col">
-                  <Link href="/about" onClick={() => setMobileOpen(false)} className="px-3 py-2.5 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700 rounded-lg font-medium">
+              <div className="px-5 pb-5 border-t border-neutral-100 pt-5">
+                <nav className="flex flex-col -mx-2">
+                  <Link href="/about" onClick={() => setMobileOpen(false)} className="px-3 py-2.5 text-[15px] text-neutral-700 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg">
                     About Us
                   </Link>
-                  <Link href="/contact" onClick={() => setMobileOpen(false)} className="px-3 py-2.5 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700 rounded-lg font-medium">
+                  <Link href="/contact" onClick={() => setMobileOpen(false)} className="px-3 py-2.5 text-[15px] text-neutral-700 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg">
                     Contact
                   </Link>
                 </nav>
               </div>
 
               {/* Bottom */}
-              <div className="p-4 border-t border-gray-100">
+              <div className="p-5 border-t border-neutral-100 mt-auto">
                 <a
-                  href="tel:+919876543210"
-                  className="flex items-center gap-2 px-3 py-2 text-sm text-green-700 font-medium"
+                  href="tel:+917888888888"
+                  className="flex items-center gap-2 px-3 py-2 text-sm text-neutral-500"
                 >
                   <Phone className="w-4 h-4" />
-                  +91 98765 43210
+                  +91 78888 88888
                 </a>
               </div>
             </motion.div>

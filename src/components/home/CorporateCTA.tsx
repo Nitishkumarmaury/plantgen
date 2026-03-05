@@ -1,14 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { FadeIn } from "@/components/ui/Animations";
+import { FadeIn, CountUp } from "@/components/ui/Animations";
 import { ArrowRight, Building2, Users, Gift } from "lucide-react";
 
 export default function CorporateCTA() {
   return (
-    <section className="py-20 bg-sage-900 relative overflow-hidden">
+    <section className="py-16 sm:py-20 lg:py-24 bg-neutral-900 relative overflow-hidden">
       {/* Subtle pattern */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-[0.03]">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="corp-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -20,25 +20,25 @@ export default function CorporateCTA() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <FadeIn>
-            <span className="text-sm font-medium text-brand-400 tracking-wide uppercase">
+            <span className="text-xs font-semibold text-brand-400 uppercase tracking-widest">
               Corporate Gifting
             </span>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white leading-tight">
               Make Your Brand
               <br />
               <span className="text-brand-400">Grow with Green</span>
             </h2>
-            <p className="mt-4 text-sage-300 leading-relaxed max-w-lg">
+            <p className="mt-5 text-neutral-400 leading-relaxed max-w-lg text-sm sm:text-base">
               Impress clients, welcome new employees, and celebrate milestones
               with eco-friendly plant gifts. Custom branding options available
               for bulk orders.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
-                href="/shop?category=Corporate"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 text-white font-medium rounded-xl hover:bg-brand-500 transition-colors"
+                href="/shop?category=Corporate%20Gifts"
+                className="inline-flex items-center gap-2 px-7 py-3 bg-white text-neutral-900 font-semibold text-sm rounded-full hover:bg-neutral-100 transition-colors"
               >
                 Explore Corporate Gifts
                 <ArrowRight className="w-4 h-4" />
@@ -47,7 +47,7 @@ export default function CorporateCTA() {
                 href="https://wa.me/917888888888?text=Hi,%20I'm%20interested%20in%20corporate%20plant%20gifting"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-sage-600 text-sage-200 font-medium rounded-xl hover:bg-sage-800 transition-colors"
+                className="inline-flex items-center gap-2 px-7 py-3 border border-neutral-600 text-neutral-300 font-medium text-sm rounded-full hover:bg-neutral-800 transition-colors"
               >
                 Get Custom Quote
               </a>
@@ -57,21 +57,21 @@ export default function CorporateCTA() {
           <FadeIn delay={0.2}>
             <div className="grid grid-cols-3 gap-4">
               {[
-                { icon: Building2, stat: "50+", label: "Corporate Clients" },
-                { icon: Users, stat: "1000+", label: "Plants Gifted" },
-                { icon: Gift, stat: "100%", label: "Happy Recipients" },
+                { icon: Building2, stat: 50, suffix: "+", label: "Corporate Clients" },
+                { icon: Users, stat: 1000, suffix: "+", label: "Plants Gifted" },
+                { icon: Gift, stat: 100, suffix: "%", label: "Happy Recipients" },
               ].map((item) => {
                 const Icon = item.icon;
                 return (
                   <div
                     key={item.label}
-                    className="text-center p-4 bg-sage-800/50 rounded-2xl"
+                    className="text-center p-5 bg-neutral-800/50 rounded-2xl border border-neutral-800 hover:border-neutral-700 transition-colors"
                   >
-                    <Icon className="w-8 h-8 text-brand-400 mx-auto mb-3" />
+                    <Icon className="w-7 h-7 text-brand-400 mx-auto mb-3" />
                     <div className="text-2xl font-bold text-white">
-                      {item.stat}
+                      <CountUp target={item.stat} suffix={item.suffix} />
                     </div>
-                    <div className="text-xs text-sage-400 mt-1">
+                    <div className="text-[11px] text-neutral-500 mt-1">
                       {item.label}
                     </div>
                   </div>

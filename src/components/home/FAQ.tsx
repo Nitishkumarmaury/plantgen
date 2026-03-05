@@ -38,16 +38,16 @@ const faqs = [
 
 function FAQItem({ faq, isOpen, toggle }: { faq: typeof faqs[0]; isOpen: boolean; toggle: () => void }) {
   return (
-    <div className="border-b border-sage-100 last:border-b-0">
+    <div className="border-b border-neutral-100 last:border-b-0">
       <button
         onClick={toggle}
         className="flex items-center justify-between w-full py-5 text-left group"
       >
-        <span className="text-sm font-medium text-sage-800 group-hover:text-brand-700 transition-colors pr-4">
+        <span className="text-sm font-medium text-neutral-800 group-hover:text-neutral-900 transition-colors pr-4">
           {faq.q}
         </span>
         <ChevronDown
-          className={`w-4 h-4 text-sage-400 flex-shrink-0 transition-transform duration-200 ${
+          className={`w-4 h-4 text-neutral-400 flex-shrink-0 transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
           }`}
         />
@@ -61,7 +61,7 @@ function FAQItem({ faq, isOpen, toggle }: { faq: typeof faqs[0]; isOpen: boolean
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-sm text-sage-500 leading-relaxed">
+            <p className="pb-5 text-sm text-neutral-500 leading-relaxed">
               {faq.a}
             </p>
           </motion.div>
@@ -75,19 +75,19 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-16 sm:py-20 lg:py-24 bg-neutral-50">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn className="text-center mb-12">
-          <span className="text-sm font-medium text-brand-600 tracking-wide uppercase">
+        <FadeIn className="text-center mb-10 sm:mb-14">
+          <span className="text-xs font-semibold text-neutral-400 uppercase tracking-widest">
             Got Questions?
           </span>
-          <h2 className="mt-2 text-3xl sm:text-4xl font-bold text-sage-900 tracking-tight">
+          <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-neutral-900">
             Frequently Asked Questions
           </h2>
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <div className="bg-sage-50/50 rounded-2xl p-6 sm:p-8 border border-sage-100">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-neutral-100 shadow-sm">
             {faqs.map((faq, i) => (
               <FAQItem
                 key={i}

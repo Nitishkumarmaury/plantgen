@@ -1,3 +1,5 @@
+import { sanitizeMarkdown } from "@/lib/sanitize";
+
 interface OrderData {
   orderId: string;
   customerName: string;
@@ -21,8 +23,13 @@ export async function sendTelegramNotification(order: OrderData): Promise<boolea
     return false;
   }
 
+  const safeName = sanitizeMarkdown(order.customerName);
+  const safeAddress = sanitizeMarkdown(order.address);
+  const safeLandmark = order.landmark ? sanitizeMarkdown(order.landmark) : "";
+  const safeMessage = order.messageNote ? sanitizeMarkdown(order.messageNote) : "";
+
   const itemsList = order.items
-    .map((item) => `  • ${item.name} x${item.quantity} — ₹${item.price * item.quantity}`)
+    .map((item) => `  • ${sanitizeMarkdown(item.name)} x${item.quantity} — ₹${item.price * item.quantity}`)
     .join("\n");
 
   const message = `
@@ -31,17 +38,17 @@ export async function sendTelegramNotification(order: OrderData): Promise<boolea
 
 📋 *Order ID:* \`${order.orderId}\`
 
-👤 *Customer:* ${order.customerName}
+👤 *Customer:* ${safeName}
 📞 *Phone:* ${order.phone}
 ${order.alternatePhone ? `📞 *Alt Phone:* ${order.alternatePhone}` : ""}
 
-📍 *Address:* ${order.address}
-${order.landmark ? `🏠 *Landmark:* ${order.landmark}` : ""}
+📍 *Address:* ${safeAddress}
+${safeLandmark ? `🏠 *Landmark:* ${safeLandmark}` : ""}
 
 📅 *Delivery:* ${order.deliveryDate}
 🕐 *Time Slot:* ${order.timeSlot}
 
-${order.messageNote ? `💌 *Gift Message:* "${order.messageNote}"` : ""}
+${safeMessage ? `💌 *Gift Message:* "${safeMessage}"` : ""}
 
 🛒 *Items:*
 ${itemsList}

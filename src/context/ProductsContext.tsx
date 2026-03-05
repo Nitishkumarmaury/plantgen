@@ -11,6 +11,7 @@ import {
 import { Product } from "@/types";
 import { products as staticProducts } from "@/data/products";
 import { subscribeToProducts } from "@/lib/productService";
+import { firebaseReady } from "@/lib/firebase";
 
 interface ProductsContextType {
   products: Product[];
@@ -45,6 +46,11 @@ export default function ProductsProvider({ children }: { children: ReactNode }) 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!firebaseReady) {
+      // Firebase unavailable — keep static products, stop loading
+      setLoading(false);
+      return;
+    }
     const unsubscribe = subscribeToProducts((firestoreProducts) => {
       if (firestoreProducts.length > 0) {
         setProducts(firestoreProducts);

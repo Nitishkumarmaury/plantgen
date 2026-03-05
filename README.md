@@ -6,8 +6,8 @@ Plantgen is a premium plant gifting e-commerce platform based in Chandigarh, Ind
 
 ## Features
 
-- **60 Plant Gifts** across 8 occasions (Birthday, Anniversary, Corporate, Festive, etc.)
-- **Smart Filtering** by occasion, budget, care level, and plant type
+- **100 Plant Products** across 7 categories (Indoor, Desk, Flowering, Outdoor, Herbs, Succulents, Corporate)
+- **Smart Filtering** by category, budget, care level, and plant type
 - **Gift Personalization** — custom messages and gift wrapping
 - **COD Checkout** with delivery scheduling (date + time slots)
 - **Telegram Notifications** — real-time order alerts to your bot

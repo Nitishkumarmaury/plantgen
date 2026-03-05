@@ -12,11 +12,13 @@ function ScrollableProductRow({
   subtitle,
   products,
   link,
+  priorityImages = false,
 }: {
   title: string;
   subtitle: string;
   products: Product[];
   link: string;
+  priorityImages?: boolean;
 }) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -28,33 +30,33 @@ function ScrollableProductRow({
   };
 
   return (
-    <div className="mb-10 sm:mb-14">
+    <div className="mb-12 sm:mb-16">
       {/* Header */}
-      <div className="flex items-end justify-between mb-4 sm:mb-6 px-4 sm:px-0">
+      <div className="flex items-end justify-between mb-6 sm:mb-8 px-4 sm:px-0">
         <div>
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-neutral-900">
             {title}
           </h2>
-          <p className="text-xs sm:text-sm text-gray-500 mt-0.5">{subtitle}</p>
+          <p className="text-xs sm:text-sm text-neutral-400 mt-1">{subtitle}</p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <div className="hidden sm:flex gap-1.5">
             <button
               onClick={() => scroll("left")}
-              className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 hover:bg-gray-50 transition-colors"
+              className="w-9 h-9 flex items-center justify-center rounded-full border border-neutral-200 hover:border-neutral-400 hover:bg-neutral-50 transition-all"
             >
-              <ChevronLeft className="w-4 h-4 text-gray-600" />
+              <ChevronLeft className="w-4 h-4 text-neutral-600" />
             </button>
             <button
               onClick={() => scroll("right")}
-              className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 hover:bg-gray-50 transition-colors"
+              className="w-9 h-9 flex items-center justify-center rounded-full border border-neutral-200 hover:border-neutral-400 hover:bg-neutral-50 transition-all"
             >
-              <ChevronRight className="w-4 h-4 text-gray-600" />
+              <ChevronRight className="w-4 h-4 text-neutral-600" />
             </button>
           </div>
           <Link
             href={link}
-            className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-green-600 hover:text-green-700 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-neutral-900 hover:text-brand-700 transition-colors"
           >
             View All
             <ArrowRight className="w-3.5 h-3.5" />
@@ -65,15 +67,15 @@ function ScrollableProductRow({
       {/* Horizontal Scroll Products */}
       <div
         ref={scrollRef}
-        className="flex gap-3 sm:gap-4 overflow-x-auto scrollbar-hide pb-2 px-4 sm:px-0 snap-x snap-mandatory"
+        className="flex gap-3 sm:gap-5 overflow-x-auto scrollbar-hide pb-2 px-4 sm:px-0 snap-x snap-mandatory"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {products.map((product, i) => (
           <div
             key={product.id}
-            className="flex-shrink-0 w-[160px] sm:w-[200px] md:w-[220px] lg:w-[250px] snap-start"
+            className="flex-shrink-0 w-[160px] sm:w-[200px] md:w-[220px] lg:w-[260px] snap-start"
           >
-            <ProductCard product={product} index={i} />
+            <ProductCard product={product} index={i} priority={priorityImages && i < 2} />
           </div>
         ))}
       </div>
@@ -88,13 +90,14 @@ export default function FeaturedProducts() {
   const priceDrops = getPriceDropProducts().slice(0, 8);
 
   return (
-    <section className="py-10 sm:py-16 bg-gray-50/50">
+    <section className="py-16 sm:py-20 lg:py-24 bg-neutral-50/50">
       <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <ScrollableProductRow
           title="Bestsellers"
           subtitle="Our most-loved plants"
           products={bestSellers}
           link="/shop"
+          priorityImages
         />
 
         <ScrollableProductRow
@@ -106,7 +109,7 @@ export default function FeaturedProducts() {
 
         {priceDrops.length > 0 && (
           <ScrollableProductRow
-            title="Price Drops 🔥"
+            title="Price Drops"
             subtitle="Grab them before they sell out"
             products={priceDrops}
             link="/shop"

@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin", "/api/", "/checkout"],
+        disallow: ["/api/", "/checkout"],
       },
     ],
     sitemap: "https://plantgen.live/sitemap.xml",

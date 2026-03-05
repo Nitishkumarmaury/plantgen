@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { Product, CartItem } from "@/types";
+import { GIFT_WRAP_COST } from "@/lib/constants";
 
 interface CartStore {
   items: CartItem[];
@@ -33,7 +34,12 @@ export const useCartStore = create<CartStore>()(
             return {
               items: state.items.map((item) =>
                 item.product.id === product.id
-                  ? { ...item, quantity: item.quantity + 1 }
+                  ? {
+                      ...item,
+                      quantity: item.quantity + 1,
+                      giftWrap: giftWrap ?? item.giftWrap,
+                      giftMessage: giftMessage ?? item.giftMessage,
+                    }
                   : item
               ),
               isOpen: true,
@@ -97,7 +103,10 @@ export const useCartStore = create<CartStore>()(
 
       totalPrice: () =>
         get().items.reduce(
-          (sum, item) => sum + item.product.price * item.quantity,
+          (sum, item) =>
+            sum +
+            (item.product.price + (item.giftWrap ? GIFT_WRAP_COST : 0)) *
+              item.quantity,
           0
         ),
     }),

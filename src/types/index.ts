@@ -1,16 +1,15 @@
-export type OccasionCategory =
-  | "Birthday"
-  | "Anniversary"
-  | "Corporate"
-  | "Welcome Kit"
-  | "Festive"
-  | "Housewarming"
-  | "Get Well Soon"
-  | "Thank You";
+export type ProductCategory =
+  | "Indoor Plants"
+  | "Desk Plants"
+  | "Flowering Plants"
+  | "Outdoor Plants"
+  | "Herbs"
+  | "Succulents"
+  | "Corporate Gifts";
 
 export type CareLevel = "Easy" | "Medium" | "Expert";
 
-export type PlantType = "Indoor" | "Desk" | "Premium" | "Combo" | "XL" | "Outdoor";
+export type PlantType = "Indoor" | "Desk" | "Flowering" | "Outdoor" | "Herb" | "Succulent" | "Corporate";
 
 export interface Product {
   id: string;
@@ -19,16 +18,17 @@ export interface Product {
   price: number;
   originalPrice?: number;
   stock: number;
-  category: OccasionCategory;
+  category: ProductCategory;
   plantType: PlantType;
   shortDescription: string;
   fullDescription: string;
   careLevel: CareLevel;
+  lightRequirement: string;
+  wateringFrequency: string;
   deliveryAvailability: string;
   codAvailable: boolean;
   imageUrl: string;
   imageUrl2?: string;
-  pexelsSearchQuery: string;
   tags: string[];
   badges: string[];
   rating: number;
@@ -84,15 +84,14 @@ export const TIME_SLOTS: TimeSlot[] = [
   { label: "7:00 PM – 9:00 PM", value: "19:00-21:00" },
 ];
 
-export const OCCASIONS: OccasionCategory[] = [
-  "Birthday",
-  "Anniversary",
-  "Corporate",
-  "Welcome Kit",
-  "Festive",
-  "Housewarming",
-  "Get Well Soon",
-  "Thank You",
+export const CATEGORIES: ProductCategory[] = [
+  "Indoor Plants",
+  "Desk Plants",
+  "Flowering Plants",
+  "Outdoor Plants",
+  "Herbs",
+  "Succulents",
+  "Corporate Gifts",
 ];
 
 export const BUDGET_RANGES = [

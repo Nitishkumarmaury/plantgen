@@ -2,104 +2,91 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { FadeIn } from "@/components/ui/Animations";
 
-const occasions = [
+const categories = [
   {
-    name: "Birthday",
-    image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&q=80",
-    description: "Living gifts that grow with love",
-    color: "from-pink-500/80 to-rose-600/80",
+    name: "Indoor Plants",
+    image: "/plants/indoor_plants/monstera_pot_09.jpg",
+    description: "Air-purifying plants for your home",
   },
   {
-    name: "Anniversary",
-    image: "https://images.unsplash.com/photo-1616694547580-10e3e2730130?w=400&q=80",
-    description: "Love that grows stronger each year",
-    color: "from-red-500/80 to-pink-600/80",
+    name: "Desk Plants",
+    image: "/plants/desk_plants/succulent_green_pot_01.jpg",
+    description: "Compact greens for your workspace",
   },
   {
-    name: "Corporate",
-    image: "https://images.unsplash.com/photo-1545241047-6083a3684587?w=400&q=80",
-    description: "Professional gifting made green",
-    color: "from-blue-500/80 to-indigo-600/80",
+    name: "Flowering Plants",
+    image: "/plants/flowering_plants/orchid_white_pot_02.jpg",
+    description: "Beautiful blooms to brighten any room",
   },
   {
-    name: "Festive",
-    image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400&q=80",
-    description: "Festival gifts that stand out",
-    color: "from-purple-500/80 to-violet-600/80",
+    name: "Outdoor Plants",
+    image: "/plants/outdoor_plants/bird_of_paradise_pot_04.jpg",
+    description: "Hardy plants for gardens & balconies",
   },
   {
-    name: "Housewarming",
-    image: "https://images.unsplash.com/photo-1598880940080-ff9a29891b85?w=400&q=80",
-    description: "Make their new house a home",
-    color: "from-emerald-500/80 to-green-600/80",
+    name: "Herbs",
+    image: "/plants/herbs/basil_herb_pot_01.jpg",
+    description: "Fresh herbs for your kitchen garden",
   },
   {
-    name: "Welcome Kit",
-    image: "https://images.unsplash.com/photo-1620127252536-03bdfcb5a1b3?w=400&q=80",
-    description: "Welcome new beginnings with green",
-    color: "from-amber-500/80 to-orange-600/80",
+    name: "Succulents",
+    image: "/plants/succulents/echeveria_elegans_pot_01.jpg",
+    description: "Low-maintenance beauties",
   },
   {
-    name: "Get Well Soon",
-    image: "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=400&q=80",
-    description: "Healing wishes wrapped in green",
-    color: "from-sky-500/80 to-cyan-600/80",
-  },
-  {
-    name: "Thank You",
-    image: "https://images.unsplash.com/photo-1622467827417-bbe2237067a9?w=400&q=80",
-    description: "Gratitude that keeps growing",
-    color: "from-orange-500/80 to-amber-600/80",
+    name: "Corporate Gifts",
+    image: "/plants/corporate_gift_plants/terrarium_gift_05.jpg",
+    description: "Professional green gifting solutions",
   },
 ];
 
 export default function ShopByOccasion() {
   return (
-    <section className="py-10 sm:py-16 bg-white">
+    <section className="py-16 sm:py-20 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-6 sm:mb-10">
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">
-            Shop by Occasion
+        <div className="text-center mb-10 sm:mb-14">
+          <span className="text-xs font-semibold text-neutral-400 uppercase tracking-widest">
+            Curated Collections
+          </span>
+          <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-neutral-900">
+            Shop by Category
           </h2>
-          <p className="text-xs sm:text-sm text-gray-500 mt-1">
-            Find the perfect plant gift for every special moment
+          <p className="mt-3 text-sm sm:text-base text-neutral-500 max-w-md mx-auto">
+            Explore our carefully curated plant collections
           </p>
         </div>
 
-        {/* Mobile: 2 columns, scrollable | Desktop: 4 columns */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
-          {occasions.map((occasion, i) => (
-            <motion.div
-              key={occasion.name}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: i * 0.05 }}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5">
+          {categories.map((cat, i) => (
+            <FadeIn
+              key={cat.name}
+              delay={Math.min(i * 0.06, 0.36)}
+              blur
             >
               <Link
-                href={`/shop?category=${occasion.name}`}
-                className="group block relative rounded-xl overflow-hidden aspect-[4/5] sm:aspect-square"
+                href={`/shop?category=${encodeURIComponent(cat.name)}`}
+                className="group block relative rounded-2xl overflow-hidden aspect-[4/5]"
               >
                 <Image
-                  src={occasion.image}
-                  alt={occasion.name}
+                  src={cat.image}
+                  alt={cat.name}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                   sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
                 />
-                <div className={`absolute inset-0 bg-gradient-to-t ${occasion.color}`} />
-                <div className="absolute inset-0 flex flex-col justify-end p-3 sm:p-4">
-                  <h3 className="text-white font-bold text-sm sm:text-base leading-tight">
-                    {occasion.name}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-5">
+                  <h3 className="text-white font-semibold text-sm sm:text-base">
+                    {cat.name}
                   </h3>
-                  <p className="text-white/80 text-[10px] sm:text-xs mt-0.5 line-clamp-1">
-                    {occasion.description}
+                  <p className="text-white/60 text-[11px] sm:text-xs mt-0.5 line-clamp-1">
+                    {cat.description}
                   </p>
                 </div>
               </Link>
-            </motion.div>
+            </FadeIn>
           ))}
         </div>
       </div>

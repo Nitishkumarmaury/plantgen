@@ -20,7 +20,7 @@ const contactMethods = [
     detail: "+91 78888 88888",
     subtitle: "Fastest way to reach us",
     href: "https://wa.me/917888888888",
-    color: "bg-green-50 text-green-600",
+    color: "bg-brand-50 text-brand-700",
   },
   {
     icon: Phone,
@@ -73,10 +73,10 @@ export default function ContactPage() {
         {/* Header */}
         <FadeIn>
           <div className="text-center mb-12">
-            <h1 className="text-3xl sm:text-4xl font-bold text-sage-900 mb-3">
+            <h1 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-3">
               Get in Touch
             </h1>
-            <p className="text-sage-500 max-w-lg mx-auto">
+            <p className="text-neutral-500 max-w-lg mx-auto">
               Have a question about plant gifting, corporate orders, or
               delivery? We&apos;d love to hear from you.
             </p>
@@ -92,16 +92,16 @@ export default function ContactPage() {
                 href={m.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white rounded-2xl p-5 border border-sage-100 hover:border-brand-200 hover:shadow-sm transition-all text-center group"
+                className="bg-white rounded-2xl p-5 border border-neutral-100 hover:border-neutral-300 hover:shadow-sm transition-all text-center group"
               >
                 <div
                   className={`w-10 h-10 ${m.color} rounded-xl flex items-center justify-center mx-auto mb-3`}
                 >
                   <m.icon className="w-5 h-5" />
                 </div>
-                <p className="text-sm font-semibold text-sage-900">{m.title}</p>
-                <p className="text-xs text-sage-500 mt-1">{m.detail}</p>
-                <p className="text-xs text-sage-400 mt-0.5">{m.subtitle}</p>
+                <p className="text-sm font-semibold text-neutral-900">{m.title}</p>
+                <p className="text-xs text-neutral-500 mt-1">{m.detail}</p>
+                <p className="text-xs text-neutral-400 mt-0.5">{m.subtitle}</p>
               </a>
             ))}
           </div>
@@ -110,21 +110,21 @@ export default function ContactPage() {
         <div className="grid lg:grid-cols-2 gap-10">
           {/* Quick Message Form */}
           <FadeIn delay={0.1}>
-            <div className="bg-white rounded-2xl p-6 border border-sage-100">
-              <h2 className="text-lg font-semibold text-sage-900 mb-1">
+            <div className="bg-white rounded-2xl p-6 border border-neutral-100">
+              <h2 className="text-lg font-semibold text-neutral-900 mb-1">
                 Send a Quick Message
               </h2>
-              <p className="text-sm text-sage-500 mb-6">
+              <p className="text-sm text-neutral-500 mb-6">
                 We&apos;ll open WhatsApp with your message ready to send.
               </p>
 
               {submitted ? (
                 <div className="text-center py-8">
-                  <CheckCircle2 className="w-10 h-10 text-green-500 mx-auto mb-3" />
-                  <p className="font-medium text-sage-900 mb-1">
+                  <CheckCircle2 className="w-10 h-10 text-brand-600 mx-auto mb-3" />
+                  <p className="font-medium text-neutral-900 mb-1">
                     Message Ready!
                   </p>
-                  <p className="text-sm text-sage-500">
+                  <p className="text-sm text-neutral-500">
                     Complete sending on WhatsApp. We&apos;ll reply ASAP!
                   </p>
                   <button
@@ -132,7 +132,7 @@ export default function ContactPage() {
                       setSubmitted(false);
                       setForm({ name: "", phone: "", message: "" });
                     }}
-                    className="mt-4 text-sm text-brand-600 hover:underline"
+                    className="mt-4 text-sm text-neutral-800 hover:underline"
                   >
                     Send another message
                   </button>
@@ -140,7 +140,7 @@ export default function ContactPage() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-xs font-medium text-sage-600 mb-1.5">
+                    <label className="block text-xs font-medium text-neutral-600 mb-1.5">
                       Your Name
                     </label>
                     <input
@@ -150,28 +150,30 @@ export default function ContactPage() {
                         setForm((p) => ({ ...p, name: e.target.value }))
                       }
                       required
-                      className="w-full px-4 py-3 bg-sage-50 border border-sage-200 rounded-xl text-sm focus:ring-2 focus:ring-brand-200 focus:border-brand-400 transition-all"
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-sm focus:ring-2 focus:ring-neutral-200 focus:border-neutral-400 transition-all"
                       placeholder="Enter your name"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-sage-600 mb-1.5">
+                    <label className="block text-xs font-medium text-neutral-600 mb-1.5">
                       Phone Number
                     </label>
                     <input
                       type="tel"
                       value={form.phone}
                       onChange={(e) =>
-                        setForm((p) => ({ ...p, phone: e.target.value }))
+                        setForm((p) => ({ ...p, phone: e.target.value.replace(/\D/g, '') }))
                       }
                       required
-                      className="w-full px-4 py-3 bg-sage-50 border border-sage-200 rounded-xl text-sm focus:ring-2 focus:ring-brand-200 focus:border-brand-400 transition-all"
+                      pattern="[6-9][0-9]{9}"
+                      title="Enter a valid 10-digit Indian phone number"
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-sm focus:ring-2 focus:ring-neutral-200 focus:border-neutral-400 transition-all"
                       placeholder="10-digit phone"
                       maxLength={10}
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-sage-600 mb-1.5">
+                    <label className="block text-xs font-medium text-neutral-600 mb-1.5">
                       Message
                     </label>
                     <textarea
@@ -181,13 +183,13 @@ export default function ContactPage() {
                       }
                       required
                       rows={4}
-                      className="w-full px-4 py-3 bg-sage-50 border border-sage-200 rounded-xl text-sm focus:ring-2 focus:ring-brand-200 focus:border-brand-400 transition-all resize-none"
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-sm focus:ring-2 focus:ring-neutral-200 focus:border-neutral-400 transition-all resize-none"
                       placeholder="How can we help?"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-brand-600 text-white font-medium rounded-xl hover:bg-brand-700 transition-colors"
+                    className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-neutral-900 text-white font-medium rounded-xl hover:bg-neutral-800 transition-colors"
                   >
                     <Send className="w-4 h-4" />
                     Send via WhatsApp
@@ -201,19 +203,19 @@ export default function ContactPage() {
           <FadeIn delay={0.15}>
             <div className="space-y-6">
               {/* Location */}
-              <div className="bg-white rounded-2xl p-6 border border-sage-100">
+              <div className="bg-white rounded-2xl p-6 border border-neutral-100">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center">
-                    <MapPin className="w-5 h-5 text-brand-600" />
+                    <MapPin className="w-5 h-5 text-neutral-800" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-sage-900">Delivery Area</h3>
-                    <p className="text-sm text-sage-500">
+                    <h3 className="font-semibold text-neutral-900">Delivery Area</h3>
+                    <p className="text-sm text-neutral-500">
                       Chandigarh & Tricity
                     </p>
                   </div>
                 </div>
-                <div className="space-y-2 text-sm text-sage-600">
+                <div className="space-y-2 text-sm text-neutral-600">
                   <p>✓ Chandigarh (all sectors)</p>
                   <p>✓ Mohali (Phases & sectors)</p>
                   <p>✓ Panchkula</p>
@@ -222,19 +224,19 @@ export default function ContactPage() {
               </div>
 
               {/* Hours */}
-              <div className="bg-white rounded-2xl p-6 border border-sage-100">
+              <div className="bg-white rounded-2xl p-6 border border-neutral-100">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-earth-50 rounded-xl flex items-center justify-center">
-                    <Clock className="w-5 h-5 text-earth-600" />
+                  <div className="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center">
+                    <Clock className="w-5 h-5 text-amber-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-sage-900">Business Hours</h3>
-                    <p className="text-sm text-sage-500">
+                    <h3 className="font-semibold text-neutral-900">Business Hours</h3>
+                    <p className="text-sm text-neutral-500">
                       When we&apos;re available
                     </p>
                   </div>
                 </div>
-                <div className="space-y-2 text-sm text-sage-600">
+                <div className="space-y-2 text-sm text-neutral-600">
                   <div className="flex justify-between">
                     <span>Monday – Saturday</span>
                     <span className="font-medium">9:00 AM – 8:00 PM</span>
@@ -243,16 +245,16 @@ export default function ContactPage() {
                     <span>Sunday</span>
                     <span className="font-medium">10:00 AM – 6:00 PM</span>
                   </div>
-                  <p className="text-xs text-sage-400 pt-1">
+                  <p className="text-xs text-neutral-400 pt-1">
                     * Same-day delivery for orders before 2 PM
                   </p>
                 </div>
               </div>
 
               {/* Corporate */}
-              <div className="bg-sage-900 rounded-2xl p-6 text-white">
+              <div className="bg-neutral-900 rounded-2xl p-6 text-white">
                 <h3 className="font-semibold mb-2">Corporate Orders?</h3>
-                <p className="text-sm text-sage-300 mb-4">
+                <p className="text-sm text-neutral-300 mb-4">
                   Planning bulk plant gifts for your team, clients, or events?
                   We offer custom branding, competitive pricing, and dedicated support.
                 </p>
@@ -260,7 +262,7 @@ export default function ContactPage() {
                   href="https://wa.me/917888888888?text=Hi, I'm interested in corporate plant gifting for my company."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-brand-600 rounded-xl text-sm font-medium hover:bg-brand-700 transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-white text-neutral-900 rounded-xl text-sm font-medium hover:bg-neutral-100 transition-colors"
                 >
                   <MessageCircle className="w-4 h-4" />
                   Get Corporate Quote

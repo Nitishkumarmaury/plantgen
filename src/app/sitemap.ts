@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 import { products } from "@/data/products";
-import { OCCASIONS } from "@/types";
+import { CATEGORIES } from "@/types";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://plantgen.live";
@@ -34,8 +34,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // Category pages
-  const categoryPages: MetadataRoute.Sitemap = OCCASIONS.map((occasion) => ({
-    url: `${baseUrl}/shop?category=${occasion}`,
+  const categoryPages: MetadataRoute.Sitemap = CATEGORIES.map((cat) => ({
+    url: `${baseUrl}/shop?category=${encodeURIComponent(cat)}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.8,

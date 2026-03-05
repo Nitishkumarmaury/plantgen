@@ -36,36 +36,36 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-20 bg-sage-50/50">
+    <section className="py-16 sm:py-20 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn className="text-center mb-14">
-          <span className="text-sm font-medium text-brand-600 tracking-wide uppercase">
+        <FadeIn className="text-center mb-12 sm:mb-16">
+          <span className="text-xs font-semibold text-neutral-400 uppercase tracking-widest">
             Happy Gifters
           </span>
-          <h2 className="mt-2 text-3xl sm:text-4xl font-bold text-sage-900 tracking-tight">
+          <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-neutral-900">
             What Our Customers Say
           </h2>
         </FadeIn>
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
           {testimonials.map((t) => (
             <StaggerItem key={t.name}>
-              <div className="bg-white rounded-2xl p-6 border border-sage-100 h-full flex flex-col">
-                <Quote className="w-8 h-8 text-brand-200 mb-3 flex-shrink-0" />
-                <p className="text-sm text-sage-600 leading-relaxed flex-1">
+              <div className="bg-neutral-50 rounded-2xl p-6 border border-neutral-100 h-full flex flex-col hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                <Quote className="w-7 h-7 text-neutral-200 mb-4 flex-shrink-0" />
+                <p className="text-sm text-neutral-600 leading-relaxed flex-1">
                   &ldquo;{t.content}&rdquo;
                 </p>
-                <div className="mt-4 pt-4 border-t border-sage-50">
+                <div className="mt-5 pt-4 border-t border-neutral-100">
                   <div className="flex gap-0.5 mb-2">
                     {Array.from({ length: t.rating }).map((_, i) => (
                       <Star
                         key={i}
-                        className="w-3.5 h-3.5 fill-earth-400 text-earth-400"
+                        className="w-3.5 h-3.5 fill-amber-400 text-amber-400"
                       />
                     ))}
                   </div>
-                  <p className="text-sm font-semibold text-sage-900">{t.name}</p>
-                  <p className="text-xs text-sage-500">{t.role}</p>
+                  <p className="text-sm font-semibold text-neutral-900">{t.name}</p>
+                  <p className="text-xs text-neutral-400 mt-0.5">{t.role}</p>
                 </div>
               </div>
             </StaggerItem>

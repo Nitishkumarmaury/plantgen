@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -7,13 +7,28 @@ import CartDrawer from "@/components/layout/CartDrawer";
 import UserAuthProvider from "@/context/UserAuthContext";
 import ProductsProvider from "@/context/ProductsContext";
 import AuthModal from "@/components/auth/AuthModal";
+import ScrollProgress from "@/components/ui/ScrollProgress";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
 });
 
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#ffffff",
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://plantgen.live"),
   title: {
     default: "Plantgen — Gift Growth. Gift Meaning. | Plant Gifting Chandigarh",
     template: "%s | Plantgen",
@@ -28,9 +43,14 @@ export const metadata: Metadata = {
     "corporate plant gifts",
     "birthday plant gift",
     "anniversary gift plants",
+    "indoor plants Chandigarh",
+    "plant delivery Mohali Panchkula",
   ],
   authors: [{ name: "Plantgen" }],
   creator: "Plantgen",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -38,17 +58,33 @@ export const metadata: Metadata = {
     siteName: "Plantgen",
     title: "Plantgen — Gift Growth. Gift Meaning.",
     description:
-      "Replace plastic gifts with meaningful plant gifts. Eco-friendly gifting in Chandigarh.",
+      "Replace plastic gifts with meaningful plant gifts. Eco-friendly gifting in Chandigarh & Tricity.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Plantgen — Plant Gifting Chandigarh",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Plantgen — Gift Growth. Gift Meaning.",
     description:
       "Eco-friendly plant gifting for every occasion. Chandigarh & Tricity delivery.",
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 
@@ -58,7 +94,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -83,9 +119,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased bg-cream text-sage-900">
+      <body className="antialiased bg-white text-neutral-900">
         <ProductsProvider>
           <UserAuthProvider>
+            <ScrollProgress />
             <Header />
             <CartDrawer />
             <AuthModal />

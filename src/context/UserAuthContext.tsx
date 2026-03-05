@@ -8,7 +8,7 @@ import {
   useCallback,
   ReactNode,
 } from "react";
-import { auth } from "@/lib/firebase";
+import { auth, firebaseReady } from "@/lib/firebase";
 import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -50,6 +50,10 @@ export default function UserAuthProvider({ children }: { children: ReactNode }) 
   const [showAuthModal, setShowAuthModal] = useState(false);
 
   useEffect(() => {
+    if (!firebaseReady) {
+      setLoading(false);
+      return;
+    }
     const unsubscribe = onAuthStateChanged(auth, (u) => {
       setUser(u);
       setLoading(false);
@@ -61,18 +65,22 @@ export default function UserAuthProvider({ children }: { children: ReactNode }) 
   const closeAuthModal = useCallback(() => setShowAuthModal(false), []);
 
   const login = async (email: string, password: string) => {
+    if (!firebaseReady) throw new Error("Authentication is currently unavailable");
     await signInWithEmailAndPassword(auth, email, password);
   };
 
   const register = async (email: string, password: string) => {
+    if (!firebaseReady) throw new Error("Authentication is currently unavailable");
     await createUserWithEmailAndPassword(auth, email, password);
   };
 
   const logout = async () => {
+    if (!firebaseReady) return;
     await signOut(auth);
   };
 
   const resetPassword = async (email: string) => {
+    if (!firebaseReady) throw new Error("Authentication is currently unavailable");
     await sendPasswordResetEmail(auth, email);
   };
 

@@ -2,7 +2,7 @@
 
 **Live:** [plantgen.live](https://plantgen.live)
 
-Plantgen is a premium plant gifting e-commerce platform based in Chandigarh, India. Built with Next.js 14, designed for emotion-driven gifting with a clean, botanical aesthetic.
+Plantgen is a premium plant gifting e-commerce platform based in Chandigarh, India. Built with Next.js 14, designed for emotion-driven gifting with a clean, botanical aesthetic
 
 ## Features
 

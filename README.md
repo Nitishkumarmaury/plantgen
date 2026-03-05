@@ -1,36 +1,138 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌿 Plantgen — Eco-Friendly Plant Gifting
+
+**Live:** [plantgen.live](https://plantgen.live)
+
+Plantgen is a premium plant gifting e-commerce platform based in Chandigarh, India. Built with Next.js 14, designed for emotion-driven gifting with a clean, botanical aesthetic.
+
+## Features
+
+- **60 Plant Gifts** across 8 occasions (Birthday, Anniversary, Corporate, Festive, etc.)
+- **Smart Filtering** by occasion, budget, care level, and plant type
+- **Gift Personalization** — custom messages and gift wrapping
+- **COD Checkout** with delivery scheduling (date + time slots)
+- **Telegram Notifications** — real-time order alerts to your bot
+- **Firebase Admin Panel** — manage orders, update status, view stats
+- **SEO Optimized** — sitemap, robots.txt, JSON-LD structured data
+- **Framer Motion** animations throughout
+- **Fully Responsive** — mobile-first design
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 14 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS |
+| Animations | Framer Motion |
+| State | Zustand (persisted cart) |
+| Database | Firebase Firestore |
+| Auth | Firebase Auth |
+| Notifications | Telegram Bot API |
+| Images | Pexels API (fallback) |
+| Icons | Lucide React |
 
 ## Getting Started
 
-First, run the development server:
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Configure environment variables
+
+Copy `.env.example` to `.env.local` and fill in:
+
+```env
+# Pexels (already included for dev)
+PEXELS_API_KEY=your_pexels_api_key
+
+# Firebase
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+
+# Telegram Bot
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_CHAT_ID=
+```
+
+### 3. Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. Build for production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   ├── page.tsx              # Homepage
+│   ├── layout.tsx            # Root layout + SEO
+│   ├── globals.css           # Global styles
+│   ├── sitemap.ts            # Dynamic sitemap
+│   ├── robots.ts             # Robots.txt
+│   ├── shop/                 # Shop with filters
+│   ├── product/[id]/         # Product detail
+│   ├── checkout/             # COD checkout
+│   ├── about/                # About page
+│   ├── contact/              # Contact page
+│   ├── admin/                # Admin panel (auth protected)
+│   └── api/orders/           # Order API + Telegram
+├── components/
+│   ├── home/                 # Homepage sections
+│   ├── layout/               # Header, Footer, CartDrawer
+│   └── ui/                   # Reusable UI components
+├── data/
+│   └── products.ts           # 60 products data
+├── lib/
+│   ├── firebase.ts           # Firebase config
+│   ├── pexels.ts             # Pexels API
+│   └── telegram.ts           # Telegram notifications
+├── store/
+│   └── cart.ts               # Zustand cart store
+└── types/
+    └── index.ts              # TypeScript interfaces
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Firebase Setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Create a Firebase project at [console.firebase.google.com](https://console.firebase.google.com)
+2. Enable **Firestore Database** (start in test mode)
+3. Enable **Authentication** → Email/Password
+4. Create an admin user in Authentication
+5. Copy config values to `.env.local`
 
-## Deploy on Vercel
+## Telegram Bot Setup
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Message [@BotFather](https://t.me/BotFather) on Telegram
+2. Create a new bot → get the **Bot Token**
+3. Get your **Chat ID** from [@userinfobot](https://t.me/userinfobot)
+4. Add both to `.env.local`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+Recommended: **Vercel**
+
+```bash
+npx vercel
+```
+
+Set environment variables in Vercel dashboard → Settings → Environment Variables.
+
+## License
+
+Private — Plantgen © 2024

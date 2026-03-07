@@ -8,16 +8,44 @@ import {
   Send,
   CheckCircle2,
   Instagram,
+  Phone,
+  Mail,
+  MessageCircle,
 } from "lucide-react";
+import { CONTACT, WHATSAPP_URL, INSTAGRAM_URL } from "@/lib/constants";
 
 const contactMethods = [
+  {
+    icon: Phone,
+    title: "Phone",
+    detail: "+91 9555179269",
+    subtitle: "Call us directly",
+    href: `tel:${CONTACT.phone}`,
+    color: "bg-brand-50 text-brand-600",
+  },
+  {
+    icon: MessageCircle,
+    title: "WhatsApp",
+    detail: "+91 9555179269",
+    subtitle: "Chat with us",
+    href: WHATSAPP_URL("Hello Plantgen, I have a query."),
+    color: "bg-green-50 text-green-600",
+  },
   {
     icon: Instagram,
     title: "Instagram",
     detail: "@plantgen.live",
     subtitle: "Follow us for updates",
-    href: "https://instagram.com/plantgen.live",
+    href: INSTAGRAM_URL,
     color: "bg-pink-50 text-pink-600",
+  },
+  {
+    icon: Mail,
+    title: "Email",
+    detail: CONTACT.email,
+    subtitle: "Write to us",
+    href: `mailto:${CONTACT.email}`,
+    color: "bg-blue-50 text-blue-600",
   },
 ];
 
@@ -31,11 +59,10 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Build mailto URL with message
     const subject = `Inquiry from ${form.name}`;
     const body = `Name: ${form.name}\nPhone: ${form.phone}\n\n${form.message}`;
     window.open(
-      `mailto:hello@plantgen.live?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
+      `mailto:${CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
       "_blank"
     );
     setSubmitted(true);

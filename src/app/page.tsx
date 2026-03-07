@@ -3,6 +3,7 @@ import ShopByOccasion from "@/components/home/ShopByOccasion";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import WhyPlantgen from "@/components/home/WhyPlantgen";
 import CorporateCTA from "@/components/home/CorporateCTA";
+import OrderCTA from "@/components/home/OrderCTA";
 import Testimonials from "@/components/home/Testimonials";
 import FAQ from "@/components/home/FAQ";
 
@@ -79,6 +80,7 @@ export default function Home() {
       <Hero />
       <ShopByOccasion />
       <FeaturedProducts />
+      <OrderCTA />
       <WhyPlantgen />
       <CorporateCTA />
       <Testimonials />

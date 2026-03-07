@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MapPin } from "lucide-react";
 import { CATEGORIES } from "@/types";
+import { WHATSAPP_URL, INSTAGRAM_URL } from "@/lib/constants";
 
 export default function Footer() {
   return (
@@ -77,13 +78,31 @@ export default function Footer() {
             <ul className="space-y-3.5">
               <li>
                 <a
-                  href="https://instagram.com/plantgen.live"
+                  href={WHATSAPP_URL("Hello Plantgen, I want to order plants.")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 text-neutral-400 hover:text-brand-400 transition-colors text-sm"
+                  className="flex items-center gap-2.5 text-neutral-400 hover:text-[#25D366] transition-colors text-sm"
                 >
-                  <span>Follow us on Instagram</span>
+                  <span>Order on WhatsApp</span>
                 </a>
+              </li>
+              <li>
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 text-neutral-400 hover:text-pink-400 transition-colors text-sm"
+                >
+                  <span>Follow on Instagram</span>
+                </a>
+              </li>
+              <li>
+                <Link
+                  href="/custom-order"
+                  className="flex items-center gap-2.5 text-neutral-400 hover:text-white transition-colors text-sm"
+                >
+                  <span>Request Custom Order</span>
+                </Link>
               </li>
             </ul>
             <div className="mt-6 p-3.5 bg-neutral-800/60 rounded-lg border border-neutral-800">

@@ -8,6 +8,7 @@ import UserAuthProvider from "@/context/UserAuthContext";
 import ProductsProvider from "@/context/ProductsContext";
 import AuthModal from "@/components/auth/AuthModal";
 import ScrollProgress from "@/components/ui/ScrollProgress";
+import FloatingContact from "@/components/ui/FloatingContact";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -106,7 +107,7 @@ export default function RootLayout({
               description:
                 "Eco-friendly plant gifting for birthdays, anniversaries, corporate events & more.",
               url: "https://plantgen.live",
-              telephone: "+917888888888",
+              "telephone": "+919555179269",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Chandigarh",
@@ -128,6 +129,7 @@ export default function RootLayout({
             <AuthModal />
             <main className="min-h-screen">{children}</main>
             <Footer />
+            <FloatingContact />
           </UserAuthProvider>
         </ProductsProvider>
       </body>

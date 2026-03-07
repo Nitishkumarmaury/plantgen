@@ -2,7 +2,24 @@
 
 import Link from "next/link";
 import { FadeIn, CountUp } from "@/components/ui/Animations";
-import { ArrowRight, Building2, Users, Gift } from "lucide-react";
+import {
+  ArrowRight,
+  Building2,
+  Users,
+  Gift,
+  PartyPopper,
+  Briefcase,
+  Heart,
+  MessageCircle,
+} from "lucide-react";
+import { WHATSAPP_URL } from "@/lib/constants";
+
+const BULK_USE_CASES = [
+  { icon: Building2, label: "Corporate Welcome Kits", description: "Impress new hires on day one" },
+  { icon: PartyPopper, label: "Event & Party Favours", description: "Memorable green giveaways" },
+  { icon: Briefcase, label: "Office Desk Plants", description: "Boost workplace wellness" },
+  { icon: Heart, label: "Client Appreciation Gifts", description: "Stand out from generic gifts" },
+];
 
 export default function CorporateCTA() {
   return (
@@ -23,7 +40,7 @@ export default function CorporateCTA() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <FadeIn>
             <span className="text-xs font-semibold text-brand-400 uppercase tracking-widest">
-              Corporate Gifting
+              Corporate & Bulk Gifting
             </span>
             <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white leading-tight">
               Make Your Brand
@@ -32,22 +49,45 @@ export default function CorporateCTA() {
             </h2>
             <p className="mt-5 text-neutral-400 leading-relaxed max-w-lg text-sm sm:text-base">
               Impress clients, welcome new employees, and celebrate milestones
-              with eco-friendly plant gifts. Custom branding options available
-              for bulk orders.
+              with eco-friendly plant gifts. Custom branding & bulk pricing
+              available for orders of 10+ plants.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+
+            {/* Bulk use cases */}
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {BULK_USE_CASES.map(({ icon: Icon, label, description }) => (
+                <div key={label} className="flex items-start gap-3 p-3 bg-white/5 rounded-xl border border-white/10">
+                  <Icon className="w-5 h-5 text-brand-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm font-medium text-white">{label}</p>
+                    <p className="text-xs text-neutral-500">{description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/shop?category=Corporate%20Gifts"
+                href="/custom-order"
                 className="inline-flex items-center gap-2 px-7 py-3 bg-gradient-to-r from-brand-500 to-teal-500 text-white font-semibold text-sm rounded-full hover:from-brand-600 hover:to-teal-600 shadow-lg shadow-brand-500/20 transition-all duration-300"
               >
-                Explore Corporate Gifts
+                Request Bulk Order
                 <ArrowRight className="w-4 h-4" />
               </Link>
+              <a
+                href={WHATSAPP_URL("Hi Plantgen! I'm interested in bulk/corporate plant gifting. Can you share details?")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-7 py-3 bg-[#25D366] text-white font-semibold text-sm rounded-full hover:bg-[#20BD5A] transition-colors"
+              >
+                <MessageCircle className="w-4 h-4" />
+                WhatsApp Us
+              </a>
               <Link
-                href="/contact"
+                href="/shop?category=Corporate%20Gifts"
                 className="inline-flex items-center gap-2 px-7 py-3 border border-neutral-600 text-neutral-300 font-medium text-sm rounded-full hover:bg-neutral-800 transition-colors"
               >
-                Get Custom Quote
+                Explore Corporate Gifts
               </Link>
             </div>
           </FadeIn>

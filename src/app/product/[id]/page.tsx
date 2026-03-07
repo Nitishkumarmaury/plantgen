@@ -353,7 +353,7 @@ export default function ProductDetailPage() {
             </div>
 
             {/* WhatsApp & Instagram CTA */}
-            <div className="flex gap-3 mb-6">
+            <div className="flex flex-col sm:flex-row gap-3 mb-6">
               <a
                 href={WHATSAPP_URL(`Hi Plantgen! I'm interested in ${product.name} (₹${product.price}). Is it available?`)}
                 target="_blank"
@@ -377,7 +377,7 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Trust Badges */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div className="flex items-center gap-2 text-sm text-neutral-600">
                 <Truck className="w-4 h-4 text-brand-600" />
                 <span>Free delivery in Chandigarh</span>

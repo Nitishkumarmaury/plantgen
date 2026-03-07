@@ -24,7 +24,8 @@ const EVENT_TYPES = [
 ] as const;
 
 const BUDGET_OPTIONS = [
-  "Under ₹5,000",
+  "₹800 – ₹2,000",
+  "₹2,000 – ₹5,000",
   "₹5,000 – ₹15,000",
   "₹15,000 – ₹50,000",
   "₹50,000+",
@@ -215,7 +216,7 @@ export default function CustomOrderPage() {
                   key={label}
                   type="button"
                   onClick={() => update("eventType", label)}
-                  className={`flex items-center gap-2 px-4 py-3 rounded-xl border text-sm font-medium transition-all ${
+                  className={`flex items-center gap-2 px-3 sm:px-4 py-3 rounded-xl border text-sm font-medium transition-all ${
                     form.eventType === label
                       ? "border-brand-500 bg-brand-50 text-brand-700"
                       : "border-neutral-200 text-neutral-600 hover:border-neutral-300"

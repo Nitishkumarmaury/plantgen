@@ -9,7 +9,7 @@ export default function FloatingContact() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-3">
       <AnimatePresence>
         {open && (
           <motion.div
@@ -17,7 +17,7 @@ export default function FloatingContact() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="bg-white rounded-2xl shadow-2xl border border-neutral-200 p-4 w-72 mb-2"
+            className="bg-white rounded-2xl shadow-2xl border border-neutral-200 p-4 w-72 max-w-[calc(100vw-3rem)] mb-2"
           >
             <p className="text-sm font-semibold text-neutral-900 mb-1">
               Chat with Plantgen 🌿

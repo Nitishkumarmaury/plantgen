@@ -54,6 +54,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { href: "/shop", label: "All Products" },
+                { href: "/custom-order", label: "Custom Order" },
                 { href: "/shop?category=Corporate%20Gifts", label: "Corporate Gifting" },
                 { href: "/about", label: "About Us" },
                 { href: "/contact", label: "Contact" },

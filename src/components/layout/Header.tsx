@@ -12,7 +12,7 @@ const navLinks = [
   { href: "/shop", label: "Plants" },
   { href: "/shop?search=birthday", label: "Birthday" },
   { href: "/shop?category=Corporate+Gifts", label: "Corporate" },
-  { href: "/shop?search=festive", label: "Festive" },
+  { href: "/custom-order", label: "Custom Order" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -286,7 +286,13 @@ export default function Header() {
 
               {/* Links */}
               <div className="px-5 pb-5 border-t border-neutral-100 pt-5">
+                <p className="text-[10px] font-semibold text-neutral-400 uppercase tracking-widest mb-3">
+                  More
+                </p>
                 <nav className="flex flex-col -mx-2">
+                  <Link href="/custom-order" onClick={() => setMobileOpen(false)} className="px-3 py-2.5 text-[15px] text-brand-700 font-medium hover:text-brand-800 hover:bg-brand-50 rounded-lg flex items-center gap-2">
+                    🎁 Custom Order
+                  </Link>
                   <Link href="/about" onClick={() => setMobileOpen(false)} className="px-3 py-2.5 text-[15px] text-neutral-700 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg">
                     About Us
                   </Link>

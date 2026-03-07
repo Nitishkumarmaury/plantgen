@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { FadeIn, CountUp } from "@/components/ui/Animations";
 import {
   ArrowRight,
@@ -93,7 +94,25 @@ export default function CorporateCTA() {
           </FadeIn>
 
           <FadeIn delay={0.2}>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="space-y-4">
+              {/* Real Gifting Image */}
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 shadow-lg group">
+                <Image
+                  src="/reviews/gifting-moment-1.jpg"
+                  alt="Real corporate plant gifting moment — Plantgen Chandigarh"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                <div className="absolute bottom-3 left-3">
+                  <span className="text-[10px] font-bold text-white/90 bg-white/20 backdrop-blur-sm px-2.5 py-1 rounded-full uppercase tracking-wider">
+                    Real Corporate Gifting
+                  </span>
+                </div>
+              </div>
+              {/* Stats */}
+              <div className="grid grid-cols-3 gap-4">
               {[
                 { icon: Building2, stat: 50, suffix: "+", label: "Corporate Clients", iconColor: "text-brand-400" },
                 { icon: Users, stat: 1000, suffix: "+", label: "Plants Gifted", iconColor: "text-teal-400" },
@@ -115,6 +134,7 @@ export default function CorporateCTA() {
                   </div>
                 );
               })}
+              </div>
             </div>
           </FadeIn>
         </div>

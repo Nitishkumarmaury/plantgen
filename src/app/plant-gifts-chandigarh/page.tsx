@@ -70,18 +70,21 @@ const testimonials = [
     location: "Sector 22, Chandigarh",
     text: "Ordered a Snake Plant for my mom's birthday. The packaging was stunning — came in a gift bag with a handwritten note. She loved it!",
     rating: 5,
+    image: "/reviews/customer-1.jpg",
   },
   {
     name: "Rohit Verma",
     location: "Phase 8, Mohali",
     text: "We ordered 25 desk plants for office welcome kits. Delivered on time with custom cards. Our new joiners were genuinely surprised!",
     rating: 5,
+    image: "/reviews/customer-2.jpg",
   },
   {
     name: "Simran Kaur",
     location: "Sector 15, Chandigarh",
     text: "Ordered 10 plants as Diwali gifts. Each came in gorgeous printed bags — felt so premium. Relatives kept asking where I got them!",
     rating: 5,
+    image: "/reviews/customer-3.jpg",
   },
 ];
 
@@ -231,6 +234,40 @@ export default function PlantGiftsChandigarhPage() {
 
         {/* Why Plant Gifts */}
         <section className="mb-16">
+          {/* Real Customer Moments Banner */}
+          <div className="grid grid-cols-2 gap-4 mb-10">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-neutral-100 shadow-sm group">
+              <Image
+                src="/reviews/gifting-moment-1.jpg"
+                alt="Real plant gift delivery to customer in Chandigarh"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 640px) 50vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-3">
+                <span className="text-[10px] font-bold text-white bg-black/30 backdrop-blur-sm px-2 py-1 rounded-full uppercase tracking-wider">
+                  Real Customer
+                </span>
+              </div>
+            </div>
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-neutral-100 shadow-sm group">
+              <Image
+                src="/reviews/gifting-moment-2.jpg"
+                alt="Happy customer receiving Plantgen plant gift in Tricity"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 640px) 50vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-3">
+                <span className="text-[10px] font-bold text-white bg-black/30 backdrop-blur-sm px-2 py-1 rounded-full uppercase tracking-wider">
+                  Gift Moment
+                </span>
+              </div>
+            </div>
+          </div>
+
           <h2 className="text-2xl sm:text-3xl font-serif font-bold text-neutral-900 mb-3">
             Why Choose Plant Gifts Over Traditional Gifts?
           </h2>
@@ -448,6 +485,17 @@ export default function PlantGiftsChandigarhPage() {
                 key={t.name}
                 className="p-6 bg-white border border-neutral-100 rounded-2xl"
               >
+                {t.image && (
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 border border-neutral-100">
+                    <Image
+                      src={t.image}
+                      alt={`${t.name} — customer review for Plantgen plant gift in Chandigarh`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, 33vw"
+                    />
+                  </div>
+                )}
                 <div className="flex gap-0.5 mb-3">
                   {Array.from({ length: t.rating }).map((_, i) => (
                     <Star

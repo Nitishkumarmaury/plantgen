@@ -206,6 +206,66 @@ export default function AboutPage() {
           </div>
         </FadeIn>
       </section>
+
+      {/* Real Moments Gallery */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <FadeIn>
+          <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900 text-center mb-3">
+            Real Customers, Real Moments
+          </h2>
+          <p className="text-neutral-500 text-center max-w-xl mx-auto mb-8">
+            From gifting moments to customer feedback — these are the real stories behind Plantgen.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {/* Gifting Moments — Featured */}
+            <div className="col-span-2 relative aspect-[16/10] rounded-2xl overflow-hidden border border-neutral-100 shadow-sm group">
+              <Image
+                src="/reviews/gifting-moment-1.jpg"
+                alt="Plant gift being delivered — real customer moment in Chandigarh"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-3 right-3">
+                <p className="text-white text-sm font-medium">Real Gifting Moment</p>
+                <p className="text-white/70 text-xs">Plant delivery in Chandigarh</p>
+              </div>
+            </div>
+            <div className="col-span-2 relative aspect-[16/10] rounded-2xl overflow-hidden border border-neutral-100 shadow-sm group">
+              <Image
+                src="/reviews/gifting-moment-2.jpg"
+                alt="Happy customer receiving Plantgen plant gift"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-3 right-3">
+                <p className="text-white text-sm font-medium">Gift Received with Love</p>
+                <p className="text-white/70 text-xs">Spreading green joy across Tricity</p>
+              </div>
+            </div>
+            {/* Customer Review Screenshots */}
+            {[
+              { src: "/reviews/customer-1.jpg", alt: "Customer feedback screenshot — Plantgen review" },
+              { src: "/reviews/customer-2.jpg", alt: "Verified customer review — plant gift delivery" },
+              { src: "/reviews/customer-3.jpg", alt: "Customer review — Plantgen gift packaging" },
+              { src: "/reviews/customer-4.jpg", alt: "Real customer feedback — Plantgen Chandigarh" },
+            ].map((img) => (
+              <div key={img.src} className="relative aspect-[3/4] rounded-xl overflow-hidden border border-neutral-100 shadow-sm group">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+              </div>
+            ))}
+          </div>
+        </FadeIn>
+      </section>
     </div>
   );
 }

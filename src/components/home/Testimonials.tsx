@@ -118,7 +118,7 @@ export default function Testimonials() {
 
         {/* Exhibition Social Proof */}
         <FadeIn>
-          <div className="bg-white rounded-2xl border border-warm-100/60 overflow-hidden shadow-sm">
+          <div className="bg-white rounded-2xl border border-warm-100/60 overflow-hidden shadow-sm mb-8">
             <div className="grid md:grid-cols-2 gap-0">
               <div className="relative aspect-[4/3] md:aspect-auto">
                 <Image
@@ -152,6 +152,42 @@ export default function Testimonials() {
                     </span>
                   ))}
                 </div>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+
+        {/* Real Customer Gifting Moments */}
+        <FadeIn>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-warm-100/60 shadow-sm group">
+              <Image
+                src="/reviews/gifting-moment-1.jpg"
+                alt="Real plant gifting moment — customer receiving Plantgen gift in Chandigarh"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-3">
+                <span className="text-[10px] font-bold text-white/90 bg-black/30 backdrop-blur-sm px-2.5 py-1 rounded-full uppercase tracking-wider">
+                  Real Customer Moment
+                </span>
+              </div>
+            </div>
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-warm-100/60 shadow-sm group">
+              <Image
+                src="/reviews/gifting-moment-2.jpg"
+                alt="Plant gift delivery moment — Plantgen Chandigarh customer"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-3">
+                <span className="text-[10px] font-bold text-white/90 bg-black/30 backdrop-blur-sm px-2.5 py-1 rounded-full uppercase tracking-wider">
+                  Gift Delivery Moment
+                </span>
               </div>
             </div>
           </div>

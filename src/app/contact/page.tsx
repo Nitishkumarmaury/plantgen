@@ -3,10 +3,7 @@
 import { useState } from "react";
 import { FadeIn } from "@/components/ui/Animations";
 import {
-  Phone,
-  Mail,
   MapPin,
-  MessageCircle,
   Clock,
   Send,
   CheckCircle2,
@@ -14,30 +11,6 @@ import {
 } from "lucide-react";
 
 const contactMethods = [
-  {
-    icon: MessageCircle,
-    title: "WhatsApp",
-    detail: "+91 78888 88888",
-    subtitle: "Fastest way to reach us",
-    href: "https://wa.me/917888888888",
-    color: "bg-brand-50 text-brand-700",
-  },
-  {
-    icon: Phone,
-    title: "Call Us",
-    detail: "+91 78888 88888",
-    subtitle: "Mon-Sat, 9 AM – 8 PM",
-    href: "tel:+917888888888",
-    color: "bg-blue-50 text-blue-600",
-  },
-  {
-    icon: Mail,
-    title: "Email",
-    detail: "hello@plantgen.live",
-    subtitle: "We reply within 24 hours",
-    href: "mailto:hello@plantgen.live",
-    color: "bg-purple-50 text-purple-600",
-  },
   {
     icon: Instagram,
     title: "Instagram",
@@ -58,10 +31,11 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Build WhatsApp URL with message
-    const text = `Hi Plantgen! I'm ${form.name} (${form.phone}). ${form.message}`;
+    // Build mailto URL with message
+    const subject = `Inquiry from ${form.name}`;
+    const body = `Name: ${form.name}\nPhone: ${form.phone}\n\n${form.message}`;
     window.open(
-      `https://wa.me/917888888888?text=${encodeURIComponent(text)}`,
+      `mailto:hello@plantgen.live?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
       "_blank"
     );
     setSubmitted(true);
@@ -115,7 +89,7 @@ export default function ContactPage() {
                 Send a Quick Message
               </h2>
               <p className="text-sm text-neutral-500 mb-6">
-                We&apos;ll open WhatsApp with your message ready to send.
+                We&apos;ll open your email client with your message ready to send.
               </p>
 
               {submitted ? (
@@ -125,7 +99,7 @@ export default function ContactPage() {
                     Message Ready!
                   </p>
                   <p className="text-sm text-neutral-500">
-                    Complete sending on WhatsApp. We&apos;ll reply ASAP!
+                    Complete sending via email. We&apos;ll reply ASAP!
                   </p>
                   <button
                     onClick={() => {
@@ -192,7 +166,7 @@ export default function ContactPage() {
                     className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-neutral-900 text-white font-medium rounded-xl hover:bg-neutral-800 transition-colors"
                   >
                     <Send className="w-4 h-4" />
-                    Send via WhatsApp
+                    Send Message
                   </button>
                 </form>
               )}
@@ -259,13 +233,10 @@ export default function ContactPage() {
                   We offer custom branding, competitive pricing, and dedicated support.
                 </p>
                 <a
-                  href="https://wa.me/917888888888?text=Hi, I'm interested in corporate plant gifting for my company."
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/shop?category=Corporate%20Gifts"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-white text-neutral-900 rounded-xl text-sm font-medium hover:bg-neutral-100 transition-colors"
                 >
-                  <MessageCircle className="w-4 h-4" />
-                  Get Corporate Quote
+                  Explore Corporate Gifts
                 </a>
               </div>
             </div>

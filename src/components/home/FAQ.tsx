@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     q: "Do you handle corporate bulk orders?",
-    a: "Yes! We specialize in corporate gifting including employee welcome kits, client gifts, and event orders. Contact us on WhatsApp for custom quotes and branding options.",
+    a: "Yes! We specialize in corporate gifting including employee welcome kits, client gifts, and event orders. Visit our Contact page for custom quotes and branding options.",
   },
   {
     q: "How do I care for the plants?",

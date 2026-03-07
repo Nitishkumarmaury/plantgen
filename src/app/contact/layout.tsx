@@ -3,7 +3,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with Plantgen for plant gifting queries, corporate orders, or delivery inquiries. WhatsApp, call, or email us.",
+    "Get in touch with Plantgen for plant gifting queries, corporate orders, or delivery inquiries.",
   alternates: { canonical: "/contact" },
 };
 

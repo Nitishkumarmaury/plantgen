@@ -218,14 +218,7 @@ export default function CheckoutPage() {
               >
                 Continue Shopping
               </Link>
-              <a
-                href={`https://wa.me/917888888888?text=Hi, I just placed order ${orderId}. Confirming my order!`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full px-6 py-3 bg-neutral-900 text-white font-medium rounded-xl hover:bg-neutral-800 transition-colors"
-              >
-                Confirm on WhatsApp
-              </a>
+
             </div>
           </FadeIn>
         </div>

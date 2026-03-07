@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { CATEGORIES } from "@/types";
 
 export default function Footer() {
@@ -77,31 +77,12 @@ export default function Footer() {
             <ul className="space-y-3.5">
               <li>
                 <a
-                  href="https://wa.me/917888888888"
+                  href="https://instagram.com/plantgen.live"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2.5 text-neutral-400 hover:text-brand-400 transition-colors text-sm"
                 >
-                  <MessageCircle className="w-4 h-4 flex-shrink-0" />
-                  <span>WhatsApp Us</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="tel:+917888888888"
-                  className="flex items-center gap-2.5 text-neutral-400 hover:text-white transition-colors text-sm"
-                >
-                  <Phone className="w-4 h-4 flex-shrink-0" />
-                  <span>+91 78888 88888</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:hello@plantgen.live"
-                  className="flex items-center gap-2.5 text-neutral-400 hover:text-white transition-colors text-sm"
-                >
-                  <Mail className="w-4 h-4 flex-shrink-0" />
-                  <span>hello@plantgen.live</span>
+                  <span>Follow us on Instagram</span>
                 </a>
               </li>
             </ul>

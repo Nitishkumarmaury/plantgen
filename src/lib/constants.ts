@@ -5,10 +5,6 @@ export const SITE_NAME = "Plantgen";
 export const SITE_TAGLINE = "Gift Growth. Gift Meaning.";
 
 export const CONTACT = {
-  phone: "+91 78888 88888",
-  phoneRaw: "917888888888",
-  email: "hello@plantgen.live",
-  whatsapp: "https://wa.me/917888888888",
   address: "Chandigarh, India",
   areas: ["Chandigarh", "Mohali", "Panchkula", "Zirakpur"],
 } as const;

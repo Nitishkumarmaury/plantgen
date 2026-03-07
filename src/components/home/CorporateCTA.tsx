@@ -43,14 +43,12 @@ export default function CorporateCTA() {
                 Explore Corporate Gifts
                 <ArrowRight className="w-4 h-4" />
               </Link>
-              <a
-                href="https://wa.me/917888888888?text=Hi,%20I'm%20interested%20in%20corporate%20plant%20gifting"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/contact"
                 className="inline-flex items-center gap-2 px-7 py-3 border border-neutral-600 text-neutral-300 font-medium text-sm rounded-full hover:bg-neutral-800 transition-colors"
               >
                 Get Custom Quote
-              </a>
+              </Link>
             </div>
           </FadeIn>
 

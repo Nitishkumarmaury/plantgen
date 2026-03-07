@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingCart, Menu, X, Search, Phone, UserCircle, LogOut } from "lucide-react";
+import { ShoppingCart, Menu, X, Search, UserCircle, LogOut } from "lucide-react";
 import { useCartStore } from "@/store/cart";
 import { useUserAuth } from "@/context/UserAuthContext";
 import { useRouter } from "next/navigation";
@@ -90,11 +90,6 @@ export default function Header() {
             <span className="opacity-80">Free delivery in Chandigarh & Tricity</span>
             <span className="mx-3 opacity-30">|</span>
             <span className="opacity-80">Cash on Delivery Available</span>
-            <span className="mx-3 opacity-30">|</span>
-            <a href="tel:+917888888888" className="flex items-center gap-1 hover:opacity-100 opacity-80 transition-opacity">
-              <Phone className="w-3 h-3" />
-              +91 78888 88888
-            </a>
           </div>
         </div>
 
@@ -301,16 +296,7 @@ export default function Header() {
                 </nav>
               </div>
 
-              {/* Bottom */}
-              <div className="p-5 border-t border-neutral-100 mt-auto">
-                <a
-                  href="tel:+917888888888"
-                  className="flex items-center gap-2 px-3 py-2 text-sm text-neutral-500"
-                >
-                  <Phone className="w-4 h-4" />
-                  +91 78888 88888
-                </a>
-              </div>
+
             </motion.div>
           </>
         )}

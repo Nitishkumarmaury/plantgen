@@ -9,6 +9,8 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/checkout"],
       },
     ],
-    sitemap: "https://plantgen.live/sitemap.xml",
+    sitemap: [
+      "https://plantgen.live/sitemap.xml",
+    ],
   };
 }

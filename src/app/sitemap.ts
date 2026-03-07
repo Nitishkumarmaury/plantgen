@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/shop`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
     { url: `${baseUrl}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/custom-order`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
   ];
 
   // ── Category pages ──

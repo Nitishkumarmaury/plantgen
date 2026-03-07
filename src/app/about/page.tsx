@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { FadeIn, StaggerContainer, StaggerItem, CountUp } from "@/components/ui/Animations";
 import { Leaf, Heart, Truck, TreePine, Users, Award, MapPin } from "lucide-react";
 import Link from "next/link";
@@ -144,7 +145,7 @@ export default function AboutPage() {
       </section>
 
       {/* Location */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
         <FadeIn>
           <MapPin className="w-6 h-6 text-brand-600 mx-auto mb-3" />
           <h2 className="text-xl font-bold text-neutral-900 mb-2">
@@ -154,6 +155,55 @@ export default function AboutPage() {
             We deliver across Chandigarh, Mohali, Panchkula, and Zirakpur.
             Same-day delivery available for orders placed before 2 PM.
           </p>
+        </FadeIn>
+      </section>
+
+      {/* Exhibition */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <FadeIn>
+          <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900 text-center mb-8">
+            Featured at IGNITE Startup Exhibition
+          </h2>
+          <div className="bg-white rounded-2xl border border-neutral-100 overflow-hidden shadow-sm">
+            <div className="grid md:grid-cols-2 gap-0">
+              <div className="relative aspect-[4/3] md:aspect-auto">
+                <Image
+                  src="/about/ignite-exhibition.jpg"
+                  alt="Plantgen stall at IGNITE Startup Exhibition - Chandigarh University Technology Business Incubator"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <div className="p-6 sm:p-8 flex flex-col justify-center">
+                <h3 className="text-lg sm:text-xl font-bold text-neutral-900 mb-3">
+                  Chandigarh University &middot; Technology Business Incubator
+                </h3>
+                <p className="text-sm text-neutral-500 leading-relaxed mb-4">
+                  Plantgen was selected to represent at the IGNITE Startup Exhibition
+                  organized by Chandigarh University&apos;s Technology Business Incubator.
+                  We showcased our customized plant gifting solutions — from corporate
+                  welcome kits and event favours to personalized gift plants with
+                  our signature printed bags.
+                </p>
+                <p className="text-sm text-neutral-500 leading-relaxed mb-5">
+                  The exhibition was an incredible experience — we connected with
+                  entrepreneurs, investors, and hundreds of visitors who loved our
+                  vision of replacing plastic gifts with living, meaningful plants.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["IGNITE Exhibition", "Chandigarh University", "Startup India", "TBI"].map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[11px] font-medium text-brand-700 bg-brand-50 px-2.5 py-1 rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </FadeIn>
       </section>
     </div>

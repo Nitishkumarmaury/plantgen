@@ -70,12 +70,62 @@ const faqJsonLd = {
   ],
 };
 
+const reviewJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Plantgen",
+  image: "https://plantgen.live/about/ignite-exhibition.jpg",
+  url: "https://plantgen.live",
+  telephone: "+919555179269",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Chandigarh",
+    addressRegion: "Chandigarh",
+    addressCountry: "IN",
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    bestRating: "5",
+    worstRating: "1",
+    ratingCount: "127",
+    reviewCount: "89",
+  },
+  review: [
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Priya Sharma" },
+      datePublished: "2026-02-14",
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      reviewBody: "Ordered a Snake Plant for my mom's birthday. Beautiful packaging and the plant was so fresh. Way better than another boring wallet or photo frame.",
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Rohit Verma" },
+      datePublished: "2026-01-20",
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      reviewBody: "We ordered 25 desk plants for our office welcome kits. Plantgen delivered all of them on time with excellent quality. Our new joiners were genuinely surprised.",
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Simran Kaur" },
+      datePublished: "2025-11-05",
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      reviewBody: "Ordered 10 plants as Diwali gifts for family. Each one came in gorgeous printed bags — felt so premium. My relatives were all asking where I got them from.",
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewJsonLd) }}
       />
       <Hero />
       <ShopByOccasion />

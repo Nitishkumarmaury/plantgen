@@ -1,10 +1,10 @@
-interface BlogSection {
+export interface BlogSection {
   heading?: string;
   paragraphs: string[];
   list?: string[];
 }
 
-interface BlogContentEntry {
+export interface BlogContentEntry {
   sections: BlogSection[];
 }
 

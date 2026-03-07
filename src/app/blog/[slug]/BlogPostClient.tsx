@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { blogPosts } from "@/data/blog";
-import { blogContent } from "@/data/blog-content";
+import { blogContent, BlogSection } from "@/data/blog-content";
 import { ChevronRight, Calendar, Clock, ArrowLeft } from "lucide-react";
 
 export default function BlogPostClient() {
@@ -97,14 +97,14 @@ export default function BlogPostClient() {
 
         {/* Article Content */}
         <article className="prose prose-neutral prose-lg max-w-none prose-headings:font-serif prose-headings:text-neutral-900 prose-a:text-brand-600 prose-a:no-underline hover:prose-a:underline">
-          {content.sections.map((section, i) => (
+          {content.sections.map((section: BlogSection, i: number) => (
             <div key={i}>
               {section.heading && (
                 <h2 className="text-2xl font-bold mt-10 mb-4">
                   {section.heading}
                 </h2>
               )}
-              {section.paragraphs.map((para, j) => (
+              {section.paragraphs.map((para: string, j: number) => (
                 <p
                   key={j}
                   className="text-neutral-700 leading-relaxed mb-4"
@@ -114,7 +114,7 @@ export default function BlogPostClient() {
               ))}
               {section.list && (
                 <ul className="space-y-2 my-4">
-                  {section.list.map((item, k) => (
+                  {section.list.map((item: string, k: number) => (
                     <li
                       key={k}
                       className="flex items-start gap-2 text-neutral-700"

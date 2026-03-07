@@ -13,7 +13,7 @@ const heroSlides = [
     subtitle: "Meaningful green gifts for every occasion — delivered with care across Chandigarh & Tricity.",
     cta: "Shop Collection",
     ctaLink: "/shop",
-    image: "/plants/indoor_plants/monstera_pot_09.jpg",
+    image: "/hero/hero-indoor-plants.jpg",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const heroSlides = [
     subtitle: "Elevate your brand with eco-friendly plant gifts. Bulk orders with custom branding available.",
     cta: "Explore Corporate",
     ctaLink: "/shop?category=Corporate%20Gifts",
-    image: "/plants/corporate_gift_plants/terrarium_gift_05.jpg",
+    image: "/hero/hero-corporate-plants.jpg",
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const heroSlides = [
     subtitle: "Transform any space with our curated collection of vibrant flowering plants.",
     cta: "View Collection",
     ctaLink: "/shop?category=Flowering%20Plants",
-    image: "/plants/flowering_plants/orchid_white_pot_02.jpg",
+    image: "/hero/hero-flowering-plants.jpg",
   },
 ];
 

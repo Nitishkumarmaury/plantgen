@@ -56,6 +56,6 @@ export const blogPosts: BlogPost[] = [
       "employee welcome gifts chandigarh",
       "eco friendly corporate gifts",
     ],
-    image: "/plants/corporate_gift_plants/branded_pot_set_01.jpg",
+    image: "/hero/blog-corporate-gifting.jpg",
   },
 ];

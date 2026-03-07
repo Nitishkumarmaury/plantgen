@@ -18,7 +18,6 @@ import { getRelatedPages } from "@/lib/seo/page-registry";
 import type { PageContent } from "@/lib/seo/content-engine";
 import { getRelevantProducts } from "@/lib/seo/content-engine";
 import { generateAllSchemas } from "@/lib/seo/schema-generators";
-import { SITE_URL, SITE_NAME } from "@/lib/constants";
 import type { Product } from "@/types";
 
 interface SEOPageProps {

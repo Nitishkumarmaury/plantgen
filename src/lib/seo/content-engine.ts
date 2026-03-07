@@ -277,7 +277,7 @@ function getDefaultUseCaseContent(): Partial<PageContent> {
   };
 }
 
-function getOccasionContent(slug: string): Partial<PageContent> {
+function getOccasionContent(): Partial<PageContent> {
   const defaults: Partial<PageContent> = {
     benefits: [
       "A meaningful, eco-friendly gift that keeps growing",
@@ -335,7 +335,7 @@ function getCityContent(slug: string, cityName: string, isLocal: boolean): Parti
 
 export function generatePageContent(page: SEOPageDefinition): PageContent {
   const dims = page.dimensions;
-  let content: PageContent = {
+  const content: PageContent = {
     intro: "",
     benefits: [],
     careTips: [],
@@ -370,7 +370,7 @@ export function generatePageContent(page: SEOPageDefinition): PageContent {
   }
 
   if (dims.occasion) {
-    const oc = getOccasionContent(dims.occasion.slug);
+    const oc = getOccasionContent();
     if (!content.benefits.length) content.benefits = oc.benefits || [];
     content.buyingTips = oc.buyingTips || [];
     content.faqs = [...content.faqs, ...(oc.faqs || [])];

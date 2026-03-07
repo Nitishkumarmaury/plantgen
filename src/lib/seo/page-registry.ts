@@ -56,15 +56,6 @@ export interface SEOPageDefinition {
   };
 }
 
-// ─── Slug Builder Helpers ───────────────────────────────────────────────────
-
-function slugify(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
-}
-
 // ─── Page Generators ────────────────────────────────────────────────────────
 // Each generator function produces pages for one URL pattern.
 

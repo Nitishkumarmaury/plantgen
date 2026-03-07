@@ -74,23 +74,7 @@ const reviewJsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "Plantgen",
-  image: "https://plantgen.live/about/ignite-exhibition.jpg",
   url: "https://plantgen.live",
-  telephone: "+919555179269",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Chandigarh",
-    addressRegion: "Chandigarh",
-    addressCountry: "IN",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    bestRating: "5",
-    worstRating: "1",
-    ratingCount: "127",
-    reviewCount: "89",
-  },
   review: [
     {
       "@type": "Review",

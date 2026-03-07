@@ -56,6 +56,8 @@ export default function Footer() {
                 { href: "/shop", label: "All Products" },
                 { href: "/custom-order", label: "Custom Order" },
                 { href: "/shop?category=Corporate%20Gifts", label: "Corporate Gifting" },
+                { href: "/blog", label: "Blog" },
+                { href: "/plant-gifts-chandigarh", label: "Plant Gifts Chandigarh" },
                 { href: "/about", label: "About Us" },
                 { href: "/contact", label: "Contact" },
               ].map((link) => (

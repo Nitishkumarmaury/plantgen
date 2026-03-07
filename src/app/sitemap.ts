@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { products } from "@/data/products";
 import { CATEGORIES } from "@/types";
 import { getAllPages } from "@/lib/seo/page-registry";
+import { blogPosts } from "@/data/blog";
 
 /**
  * Dynamic sitemap supporting 100k+ SEO pages.
@@ -23,6 +24,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/custom-order`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/plant-gifts-chandigarh`, lastModified: now, changeFrequency: "weekly", priority: 0.95 },
+    { url: `${baseUrl}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
   ];
 
   // ── Category pages ──
@@ -49,5 +52,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: page.priority,
   }));
 
-  return [...staticPages, ...categoryPages, ...productPages, ...seoPages];
+  // ── Blog posts ──
+  const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...categoryPages, ...productPages, ...blogPages, ...seoPages];
 }

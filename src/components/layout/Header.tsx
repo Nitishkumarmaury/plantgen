@@ -13,6 +13,7 @@ const navLinks = [
   { href: "/shop?search=birthday", label: "Birthday" },
   { href: "/shop?category=Corporate+Gifts", label: "Corporate" },
   { href: "/custom-order", label: "Custom Order" },
+  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -292,6 +293,9 @@ export default function Header() {
                 <nav className="flex flex-col -mx-2">
                   <Link href="/custom-order" onClick={() => setMobileOpen(false)} className="px-3 py-2.5 text-[15px] text-brand-700 font-medium hover:text-brand-800 hover:bg-brand-50 rounded-lg flex items-center gap-2">
                     🎁 Custom Order
+                  </Link>
+                  <Link href="/blog" onClick={() => setMobileOpen(false)} className="px-3 py-2.5 text-[15px] text-neutral-700 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg">
+                    📝 Blog
                   </Link>
                   <Link href="/about" onClick={() => setMobileOpen(false)} className="px-3 py-2.5 text-[15px] text-neutral-700 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg">
                     About Us

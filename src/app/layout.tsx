@@ -107,15 +107,40 @@ export default function RootLayout({
               description:
                 "Eco-friendly plant gifting for birthdays, anniversaries, corporate events & more.",
               url: "https://plantgen.live",
-              "telephone": "+919555179269",
+              image: "https://plantgen.live/about/ignite-exhibition.jpg",
+              telephone: "+919555179269",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Chandigarh",
                 addressRegion: "Chandigarh",
                 addressCountry: "IN",
               },
-              areaServed: ["Chandigarh", "Mohali", "Panchkula"],
-              priceRange: "₹299 - ₹1499",
+              areaServed: ["Chandigarh", "Mohali", "Panchkula", "Zirakpur"],
+              priceRange: "₹220 - ₹1499",
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: "4.9",
+                bestRating: "5",
+                worstRating: "1",
+                ratingCount: "127",
+                reviewCount: "89",
+              },
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Plantgen",
+              url: "https://plantgen.live",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: "https://plantgen.live/shop?search={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
             }),
           }}
         />

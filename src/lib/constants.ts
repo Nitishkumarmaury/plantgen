@@ -9,7 +9,7 @@ export const CONTACT = {
   areas: ["Chandigarh", "Mohali", "Panchkula", "Zirakpur"],
   phone: "+919555179269",
   whatsapp: "+919555179269",
-  email: "nitishkumar200485@gmail.com",
+  email: "hello@plantgen.live",
   instagram: "https://www.instagram.com/plantgen.live?igsh=MWQwc2hmczQ4N284bQ%3D%3D&utm_source=qr",
 } as const;
 

@@ -9,26 +9,32 @@ import { useState, useEffect, useCallback } from "react";
 const heroSlides = [
   {
     id: 1,
-    title: "Plants That\nSpeak Love",
-    subtitle: "Meaningful green gifts for every occasion — delivered with care across Chandigarh & Tricity.",
-    cta: "Shop Collection",
+    title: "Gift a Plant.\nGrow a Memory.",
+    subtitle: "Replace dying flower bouquets with living plant bouquets. Every time they water it, they remember you. Same-day delivery across Chandigarh & Tricity.",
+    cta: "Shop Plant Bouquets",
     ctaLink: "/shop",
+    secondaryCta: "How It Works",
+    secondaryLink: "#how-it-works",
     image: "/hero/hero-indoor-plants.jpg",
   },
   {
     id: 2,
-    title: "Corporate\nPlant Gifting",
-    subtitle: "Elevate your brand with eco-friendly plant gifts. Bulk orders with custom branding available.",
-    cta: "Explore Corporate",
-    ctaLink: "/shop?category=Corporate%20Gifts",
+    title: "Corporate Gifting,\nReimagined.",
+    subtitle: "Welcome kits. Event favours. Client appreciation. Bulk plant bouquets that leave lasting impressions. Custom branding available.",
+    cta: "Get Bulk Quote",
+    ctaLink: "/custom-order",
+    secondaryCta: "See Options",
+    secondaryLink: "/shop?category=Corporate%20Gifts",
     image: "/hero/hero-corporate-plants.jpg",
   },
   {
     id: 3,
-    title: "Beautiful\nFlowering Plants",
-    subtitle: "Transform any space with our curated collection of vibrant flowering plants.",
-    cta: "View Collection",
-    ctaLink: "/shop?category=Flowering%20Plants",
+    title: "Flowers Die.\nPlants Grow.",
+    subtitle: "A ₹300 plant outlasts a ₹500 bouquet. Give a gift they'll water, watch grow, and always associate with you.",
+    cta: "Send a Plant Gift",
+    ctaLink: "/shop",
+    secondaryCta: "Our Story",
+    secondaryLink: "/about",
     image: "/hero/hero-flowering-plants.jpg",
   },
 ];
@@ -113,10 +119,10 @@ export default function Hero() {
                     {slide.cta}
                   </Link>
                   <Link
-                    href="/about"
+                    href={slide.secondaryLink}
                     className="inline-flex items-center px-6 py-3 sm:py-3.5 border border-white/40 text-white text-sm sm:text-base font-medium rounded-full hover:bg-white/10 hover:border-white/60 transition-all duration-300"
                   >
-                    Our Story
+                    {slide.secondaryCta}
                   </Link>
                 </motion.div>
               </div>

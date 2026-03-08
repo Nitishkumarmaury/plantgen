@@ -107,9 +107,9 @@ function generatePlantsForPages(): SEOPageDefinition[] {
     });
   }
 
-  // Plant × Room: /plants-for/snake-plant-in-bedroom
-  for (const plant of plantTypes) {
-    for (const room of rooms) {
+  // Plant × Room (limited to top 10 plants × top 8 rooms to avoid thin content)
+  for (const plant of plantTypes.slice(0, 10)) {
+    for (const room of rooms.slice(0, 8)) {
       const slug = `${plant.slug}-in-${room.slug}`;
       pages.push({
         slug,
@@ -125,9 +125,9 @@ function generatePlantsForPages(): SEOPageDefinition[] {
     }
   }
 
-  // Use case × Room: /plants-for/air-purifying-in-bedroom
-  for (const uc of useCases) {
-    for (const room of rooms) {
+  // Use case × Room (limited to top 10 use cases × top 8 rooms)
+  for (const uc of useCases.slice(0, 10)) {
+    for (const room of rooms.slice(0, 8)) {
       const slug = `${uc.slug}-in-${room.slug}`;
       pages.push({
         slug,
@@ -218,9 +218,9 @@ function generatePlantGiftPages(): SEOPageDefinition[] {
     });
   }
 
-  // Occasion × City: /plant-gifts/birthday-in-chandigarh
+  // Occasion × City (limited to local delivery cities only)
   for (const occ of occasions) {
-    for (const city of cities) {
+    for (const city of cities.filter((c) => c.localDelivery)) {
       const slug = `${occ.slug}-in-${city.slug}`;
       pages.push({
         slug,
@@ -236,9 +236,9 @@ function generatePlantGiftPages(): SEOPageDefinition[] {
     }
   }
 
-  // Plant × Occasion: /plant-gifts/lucky-bamboo-for-birthday
-  for (const plant of plantTypes) {
-    for (const occ of occasions) {
+  // Plant × Occasion (limited to top 10 plants × top 10 occasions)
+  for (const plant of plantTypes.slice(0, 10)) {
+    for (const occ of occasions.slice(0, 10)) {
       const slug = `${plant.slug}-for-${occ.slug}`;
       pages.push({
         slug,
@@ -275,9 +275,9 @@ function generateDeliveryPages(): SEOPageDefinition[] {
     });
   }
 
-  // Plant × City: /plant-delivery/snake-plant-in-chandigarh
+  // Plant × City (limited to local delivery cities only)
   for (const plant of plantTypes) {
-    for (const city of cities) {
+    for (const city of cities.filter((c) => c.localDelivery)) {
       const slug = `${plant.slug}-in-${city.slug}`;
       pages.push({
         slug,
@@ -293,9 +293,9 @@ function generateDeliveryPages(): SEOPageDefinition[] {
     }
   }
 
-  // Use case × City: /plant-delivery/air-purifying-in-delhi
+  // Use case × City (limited to local delivery cities only)
   for (const uc of useCases) {
-    for (const city of cities) {
+    for (const city of cities.filter((c) => c.localDelivery)) {
       const slug = `${uc.slug}-in-${city.slug}`;
       pages.push({
         slug,

@@ -8,7 +8,7 @@ import { SITE_URL } from "@/lib/constants";
 export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  const slugs = getTopSlugsForRoute("plant-delivery", 200);
+  const slugs = getTopSlugsForRoute("plant-delivery", 30);
   return slugs.map((slug) => ({ slug }));
 }
 

@@ -1,4 +1,6 @@
 import Hero from "@/components/home/Hero";
+import HowItWorks from "@/components/home/HowItWorks";
+import PlantStory from "@/components/home/PlantStory";
 import ShopByOccasion from "@/components/home/ShopByOccasion";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import WhyPlantgen from "@/components/home/WhyPlantgen";
@@ -14,10 +16,26 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
+      name: "What is a plant bouquet?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "A plant bouquet is Plantgen's signature concept — instead of a flower bouquet that dies in 3 days, we give you a living plant in beautiful gift packaging. It grows over time, making it a lasting reminder of the person who gifted it.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How is Plantgen different from a nursery?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We're not a nursery — we're a gifting brand. Every plant comes in premium packaging with a personalized message card and care instructions. We focus on the gifting experience, not just selling plants.",
+      },
+    },
+    {
+      "@type": "Question",
       name: "Where do you deliver?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We currently deliver across Chandigarh, Mohali, and Panchkula (Tricity area). Same-day delivery is available for orders placed before 2 PM.",
+        text: "We deliver across Chandigarh, Mohali, Panchkula, and Zirakpur (Tricity area). Same-day delivery is available for orders placed before 2 PM. We also deliver to Chandigarh University and IT Park Chandigarh.",
       },
     },
     {
@@ -68,58 +86,13 @@ const faqJsonLd = {
         text: "Every plant comes with a care instruction card specific to the plant type. Most of our gifting plants are selected for being easy to maintain — even for beginners!",
       },
     },
-  ],
-};
-
-const reviewJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Plantgen",
-  description:
-    "Eco-friendly plant gifting for birthdays, anniversaries, corporate events & more.",
-  url: "https://plantgen.live",
-  image: "https://plantgen.live/about/ignite-exhibition.jpg",
-  telephone: "+919555179269",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Chandigarh",
-    addressRegion: "Chandigarh",
-    addressCountry: "IN",
-  },
-  areaServed: ["Chandigarh", "Mohali", "Panchkula", "Zirakpur"],
-  priceRange: "₹220 - ₹1499",
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    bestRating: "5",
-    worstRating: "1",
-    ratingCount: "127",
-    reviewCount: "89",
-  },
-  review: [
     {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Priya Sharma" },
-      datePublished: "2026-02-14",
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      reviewBody:
-        "Ordered a Snake Plant for my mom's birthday. Beautiful packaging and the plant was so fresh. Way better than another boring wallet or photo frame.",
-    },
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Rohit Verma" },
-      datePublished: "2026-01-20",
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      reviewBody:
-        "We ordered 25 desk plants for our office welcome kits. Plantgen delivered all of them on time with excellent quality. Our new joiners were genuinely surprised.",
-    },
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Simran Kaur" },
-      datePublished: "2025-11-05",
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      reviewBody:
-        "Ordered 10 plants as Diwali gifts for family. Each one came in gorgeous printed bags — felt so premium. My relatives were all asking where I got them from.",
+      "@type": "Question",
+      name: "Do you deliver to Chandigarh University?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes! We deliver to CU and all major campuses, IT Park Chandigarh, and the entire Tricity region including Chandigarh, Mohali, Panchkula, and Zirakpur.",
+      },
     },
   ],
 };
@@ -131,11 +104,9 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewJsonLd) }}
-      />
       <Hero />
+      <HowItWorks />
+      <PlantStory />
       <ShopByOccasion />
       <FeaturedProducts />
       <OrderCTA />

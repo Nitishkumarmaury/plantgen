@@ -32,21 +32,22 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://plantgen.live"),
   title: {
-    default: "Plantgen — Gift Growth. Gift Meaning. | Plant Gifting Chandigarh",
+    default: "Plantgen — Gift a Plant. Grow a Memory. | Plant Bouquet & Gift Delivery Chandigarh",
     template: "%s | Plantgen",
   },
   description:
     "Replace plastic gifts with meaningful plant gifts. Eco-friendly gifting for birthdays, anniversaries, corporate events & more. Same-day delivery in Chandigarh & Tricity.",
   keywords: [
+    "plant bouquet",
+    "plant bouquet online",
     "plant gifting Chandigarh",
     "send plant gift Chandigarh",
     "eco friendly gifts Chandigarh",
     "same day plant delivery Chandigarh",
     "corporate plant gifts",
     "birthday plant gift",
-    "anniversary gift plants",
-    "indoor plants Chandigarh",
-    "plant delivery Mohali Panchkula",
+    "plant return gifts",
+    "plant delivery Mohali Panchkula Zirakpur",
   ],
   authors: [{ name: "Plantgen" }],
   creator: "Plantgen",
@@ -58,9 +59,9 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://plantgen.live",
     siteName: "Plantgen",
-    title: "Plantgen — Gift Growth. Gift Meaning.",
+    title: "Plantgen — Gift a Plant. Grow a Memory.",
     description:
-      "Replace plastic gifts with meaningful plant gifts. Eco-friendly gifting in Chandigarh & Tricity.",
+      "Plant bouquets & eco-friendly plant gifts for every occasion. Same-day delivery in Chandigarh & Tricity.",
     images: [
       {
         url: "/og-image.jpg",
@@ -72,21 +73,22 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Plantgen — Gift Growth. Gift Meaning.",
+    title: "Plantgen — Gift a Plant. Grow a Memory.",
     description:
-      "Eco-friendly plant gifting for every occasion. Chandigarh & Tricity delivery.",
+      "Plant bouquets & eco-friendly plant gifts. Same-day delivery in Chandigarh & Tricity.",
     images: ["/og-image.jpg"],
   },
   icons: {
     icon: [
-      { url: "/favicon.png", type: "image/png", sizes: "any" },
-      { url: "/favicon.png", type: "image/png", sizes: "32x32" },
-      { url: "/favicon.png", type: "image/png", sizes: "192x192" },
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon-48x48.png", type: "image/png", sizes: "48x48" },
+      { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
+      { url: "/favicon-192x192.png", type: "image/png", sizes: "192x192" },
     ],
     apple: [
-      { url: "/favicon.png", type: "image/png", sizes: "180x180" },
+      { url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" },
     ],
-    shortcut: "/favicon.png",
+    shortcut: "/favicon.ico",
   },
   manifest: "/site.webmanifest",
   robots: {

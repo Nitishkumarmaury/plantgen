@@ -7,8 +7,16 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
   {
+    q: "What is a plant bouquet?",
+    a: "A plant bouquet is our signature concept — instead of a flower bouquet that dies in 3 days, we give you a living plant in beautiful gift packaging. It grows over time, making it a lasting reminder of the person who gifted it.",
+  },
+  {
+    q: "How is Plantgen different from a nursery?",
+    a: "We're not a nursery — we're a gifting brand. Every plant comes in premium packaging with a personalized message card and care instructions. We focus on the gifting experience, not just selling plants.",
+  },
+  {
     q: "Where do you deliver?",
-    a: "We currently deliver across Chandigarh, Mohali, and Panchkula (Tricity area). Same-day delivery is available for orders placed before 2 PM.",
+    a: "We deliver across Chandigarh, Mohali, Panchkula, and Zirakpur (Tricity area). Same-day delivery is available for orders placed before 2 PM. We also deliver to Chandigarh University and IT Park Chandigarh.",
   },
   {
     q: "What payment methods do you accept?",
@@ -33,6 +41,10 @@ const faqs = [
   {
     q: "How do I care for the plants?",
     a: "Every plant comes with a care instruction card specific to the plant type. Most of our gifting plants are selected for being easy to maintain — even for beginners!",
+  },
+  {
+    q: "Do you deliver to Chandigarh University?",
+    a: "Yes! We deliver to CU and all major campuses, IT Park Chandigarh, and the entire Tricity region including Chandigarh, Mohali, Panchkula, and Zirakpur.",
   },
 ];
 

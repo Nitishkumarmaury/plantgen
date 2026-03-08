@@ -12,15 +12,9 @@ const nextConfig = {
       },
     ],
   },
-  // Redirect www to non-www and enforce HTTPS
+  // Redirect Vercel subdomain to primary domain
   async redirects() {
     return [
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.plantgen.live" }],
-        destination: "https://plantgen.live/:path*",
-        permanent: true,
-      },
       {
         source: "/:path*",
         has: [{ type: "host", value: "plantgen.vercel.app" }],

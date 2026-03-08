@@ -21,6 +21,12 @@ const nextConfig = {
         destination: "https://plantgen.live/:path*",
         permanent: true,
       },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "plantgen.vercel.app" }],
+        destination: "https://plantgen.live/:path*",
+        permanent: true,
+      },
     ];
   },
   // Production security headers

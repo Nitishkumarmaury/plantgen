@@ -34,6 +34,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Plant Gifts Chandigarh — Same-Day Delivery | Plantgen",
+    description:
+      "Send meaningful plant gifts in Chandigarh & Tricity. Starting ₹260. Free gift wrapping.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function PlantGiftsChandigarhLayout({

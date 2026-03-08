@@ -4,6 +4,14 @@ export const metadata: Metadata = {
   title: "Request a Custom Plant Gift | Plantgen",
   description:
     "Request custom plant gifts for events, corporate gifting, parties, and welcome gifts. Bulk orders available with same-day delivery in Chandigarh & Tricity.",
+  keywords: [
+    "custom plant gifts",
+    "bulk plant orders Chandigarh",
+    "corporate plant gifts",
+    "event plant gifting",
+    "welcome kit plants",
+  ],
+  alternates: { canonical: "/custom-order" },
 };
 
 export default function CustomOrderLayout({

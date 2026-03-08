@@ -76,6 +76,18 @@ export const metadata: Metadata = {
       "Eco-friendly plant gifting for every occasion. Chandigarh & Tricity delivery.",
     images: ["/og-image.jpg"],
   },
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png", sizes: "any" },
+      { url: "/favicon.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon.png", type: "image/png", sizes: "192x192" },
+    ],
+    apple: [
+      { url: "/favicon.png", type: "image/png", sizes: "180x180" },
+    ],
+    shortcut: "/favicon.png",
+  },
+  manifest: "/site.webmanifest",
   robots: {
     index: true,
     follow: true,

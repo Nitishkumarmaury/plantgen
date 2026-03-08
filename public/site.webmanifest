@@ -1,0 +1,21 @@
+{
+  "name": "Plantgen — Gift Growth. Gift Meaning.",
+  "short_name": "Plantgen",
+  "description": "Eco-friendly plant gifting for birthdays, anniversaries, corporate events & more. Chandigarh & Tricity delivery.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

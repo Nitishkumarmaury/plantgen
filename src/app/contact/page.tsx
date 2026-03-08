@@ -9,7 +9,6 @@ import {
   CheckCircle2,
   Instagram,
   Phone,
-  Mail,
   MessageCircle,
 } from "lucide-react";
 import { CONTACT, WHATSAPP_URL, INSTAGRAM_URL } from "@/lib/constants";
@@ -39,14 +38,6 @@ const contactMethods = [
     href: INSTAGRAM_URL,
     color: "bg-pink-50 text-pink-600",
   },
-  {
-    icon: Mail,
-    title: "Email",
-    detail: CONTACT.email,
-    subtitle: "Write to us",
-    href: `mailto:${CONTACT.email}`,
-    color: "bg-blue-50 text-blue-600",
-  },
 ];
 
 export default function ContactPage() {
@@ -59,10 +50,9 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = `Inquiry from ${form.name}`;
-    const body = `Name: ${form.name}\nPhone: ${form.phone}\n\n${form.message}`;
+    const msg = `Name: ${form.name}\nPhone: ${form.phone}\n\n${form.message}`;
     window.open(
-      `mailto:${CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
+      WHATSAPP_URL(msg),
       "_blank"
     );
     setSubmitted(true);
@@ -86,7 +76,7 @@ export default function ContactPage() {
 
         {/* Contact Methods */}
         <FadeIn delay={0.05}>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
             {contactMethods.map((m) => (
               <a
                 key={m.title}
@@ -116,7 +106,7 @@ export default function ContactPage() {
                 Send a Quick Message
               </h2>
               <p className="text-sm text-neutral-500 mb-6">
-                We&apos;ll open your email client with your message ready to send.
+                We&apos;ll send your message via WhatsApp.
               </p>
 
               {submitted ? (
@@ -126,7 +116,7 @@ export default function ContactPage() {
                     Message Ready!
                   </p>
                   <p className="text-sm text-neutral-500">
-                    Complete sending via email. We&apos;ll reply ASAP!
+                    Your message has been sent via WhatsApp. We&apos;ll reply ASAP!
                   </p>
                   <button
                     onClick={() => {

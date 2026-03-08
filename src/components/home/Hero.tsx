@@ -130,37 +130,53 @@ export default function Hero() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Navigation Arrows */}
+        {/* Navigation Arrows — hidden on mobile, visible on sm+ */}
         <button
           onClick={prev}
-          className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 glass rounded-full transition-all"
+          className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 hidden sm:flex items-center justify-center bg-white/10 hover:bg-white/20 glass rounded-full transition-all"
           aria-label="Previous slide"
         >
           <ChevronLeft className="w-5 h-5 text-white" />
         </button>
         <button
           onClick={next}
-          className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 glass rounded-full transition-all"
+          className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 hidden sm:flex items-center justify-center bg-white/10 hover:bg-white/20 glass rounded-full transition-all"
           aria-label="Next slide"
         >
           <ChevronRight className="w-5 h-5 text-white" />
         </button>
 
-        {/* Dots */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2.5">
-          {heroSlides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => {
-                setDirection(i > current ? 1 : -1);
-                setCurrent(i);
-              }}
-              className={`h-[3px] rounded-full transition-all duration-500 ${
-                i === current ? "bg-gradient-to-r from-brand-400 to-teal-400 w-8" : "bg-white/40 w-4 hover:bg-white/60"
-              }`}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
+        {/* Bottom Navigation — arrows + dots combined on mobile, dots only on sm+ */}
+        <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
+          <button
+            onClick={prev}
+            className="sm:hidden w-8 h-8 flex items-center justify-center bg-white/15 hover:bg-white/25 rounded-full transition-all"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="w-4 h-4 text-white" />
+          </button>
+          <div className="flex items-center gap-2.5">
+            {heroSlides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => {
+                  setDirection(i > current ? 1 : -1);
+                  setCurrent(i);
+                }}
+                className={`h-[3px] rounded-full transition-all duration-500 ${
+                  i === current ? "bg-gradient-to-r from-brand-400 to-teal-400 w-8" : "bg-white/40 w-4 hover:bg-white/60"
+                }`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
+          <button
+            onClick={next}
+            className="sm:hidden w-8 h-8 flex items-center justify-center bg-white/15 hover:bg-white/25 rounded-full transition-all"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="w-4 h-4 text-white" />
+          </button>
         </div>
       </div>
 

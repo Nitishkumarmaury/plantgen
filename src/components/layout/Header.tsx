@@ -100,11 +100,11 @@ export default function Header() {
             {/* Left: Menu + Logo */}
             <div className="flex items-center gap-3">
               <button
-                className="lg:hidden p-1.5 -ml-1.5 text-neutral-700 hover:text-neutral-900 transition-colors"
+                className="lg:hidden p-2.5 -ml-1.5 text-neutral-700 hover:text-neutral-900 transition-colors"
                 onClick={() => setMobileOpen(true)}
                 aria-label="Open menu"
               >
-                <Menu className="w-5 h-5" />
+                <Menu className="w-6 h-6" />
               </button>
 
               <Link href="/" className="flex items-center gap-2 group">
@@ -260,7 +260,7 @@ export default function Header() {
                 </Link>
                 <button
                   onClick={() => setMobileOpen(false)}
-                  className="p-1.5 text-neutral-400 hover:text-neutral-700 transition-colors"
+                  className="p-2.5 text-neutral-400 hover:text-neutral-700 transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>

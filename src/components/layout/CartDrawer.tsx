@@ -61,7 +61,7 @@ export default function CartDrawer() {
               <button
                 onClick={closeCart}
                 aria-label="Close cart"
-                className="p-1.5 text-neutral-400 hover:text-neutral-600 transition-colors rounded-lg hover:bg-neutral-50"
+                className="p-2.5 text-neutral-400 hover:text-neutral-600 transition-colors rounded-lg hover:bg-neutral-50"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -126,9 +126,9 @@ export default function CartDrawer() {
                               )
                             }
                             aria-label="Decrease quantity"
-                            className="w-6 h-6 rounded-md bg-white border border-neutral-200 flex items-center justify-center text-neutral-600 hover:border-neutral-400 transition-colors"
+                            className="w-8 h-8 rounded-md bg-white border border-neutral-200 flex items-center justify-center text-neutral-600 hover:border-neutral-400 transition-colors"
                           >
-                            <Minus className="w-3 h-3" />
+                            <Minus className="w-3.5 h-3.5" />
                           </button>
                           <span className="text-sm font-medium text-neutral-800 w-6 text-center">
                             {item.quantity}
@@ -141,9 +141,9 @@ export default function CartDrawer() {
                               )
                             }
                             aria-label="Increase quantity"
-                            className="w-6 h-6 rounded-md bg-white border border-neutral-200 flex items-center justify-center text-neutral-600 hover:border-neutral-400 transition-colors"
+                            className="w-8 h-8 rounded-md bg-white border border-neutral-200 flex items-center justify-center text-neutral-600 hover:border-neutral-400 transition-colors"
                           >
-                            <Plus className="w-3 h-3" />
+                            <Plus className="w-3.5 h-3.5" />
                           </button>
                           <button
                             onClick={() => removeItem(item.product.id)}

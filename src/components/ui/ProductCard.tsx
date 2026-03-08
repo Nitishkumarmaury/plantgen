@@ -30,10 +30,10 @@ export default function ProductCard({ product, index = 0, priority = false }: Pr
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.35, delay: Math.min(index * 0.04, 0.6) }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.3, delay: Math.min(index * 0.03, 0.3) }}
       className="group w-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -75,12 +75,12 @@ export default function ProductCard({ product, index = 0, priority = false }: Pr
             {/* Badges Row */}
             <div className="absolute top-2 right-2 z-10 flex flex-col gap-1">
               {product.bestSeller && (
-                <span className="inline-block px-2 py-0.5 bg-gradient-to-r from-warm-500 to-warm-600 text-white text-[10px] font-bold rounded-sm shadow-sm">
+                <span className="inline-block px-2 py-0.5 bg-gradient-to-r from-warm-500 to-warm-600 text-white text-[11px] font-bold rounded-sm shadow-sm">
                   BESTSELLER
                 </span>
               )}
               {product.newArrival && (
-                <span className="inline-block px-2 py-0.5 bg-gradient-to-r from-brand-600 to-teal-600 text-white text-[10px] font-bold rounded-sm shadow-sm">
+                <span className="inline-block px-2 py-0.5 bg-gradient-to-r from-brand-600 to-teal-600 text-white text-[11px] font-bold rounded-sm shadow-sm">
                   NEW
                 </span>
               )}
@@ -125,7 +125,7 @@ export default function ProductCard({ product, index = 0, priority = false }: Pr
 
           {/* Product Name */}
           <Link href={`/product/${product.id}`}>
-            <h3 className="text-[13px] sm:text-sm font-semibold text-neutral-800 leading-tight line-clamp-2 group-hover:text-brand-700 transition-colors min-h-[32px]">
+            <h3 className="text-sm font-semibold text-neutral-800 leading-tight line-clamp-2 group-hover:text-brand-700 transition-colors min-h-[32px]">
               {product.name}
             </h3>
           </Link>

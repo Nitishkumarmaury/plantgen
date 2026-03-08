@@ -70,7 +70,6 @@ export default function ShopByOccasion() {
             <FadeIn
               key={cat.name}
               delay={Math.min(i * 0.06, 0.36)}
-              blur
             >
               <Link
                 href={`/shop?category=${encodeURIComponent(cat.name)}`}

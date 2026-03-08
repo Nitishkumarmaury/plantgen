@@ -24,7 +24,8 @@ function ScrollableProductRow({
 
   const scroll = (dir: "left" | "right") => {
     if (scrollRef.current) {
-      const amount = dir === "left" ? -280 : 280;
+      const cardWidth = scrollRef.current.querySelector('div')?.offsetWidth ?? 200;
+      const amount = dir === "left" ? -cardWidth : cardWidth;
       scrollRef.current.scrollBy({ left: amount, behavior: "smooth" });
     }
   };

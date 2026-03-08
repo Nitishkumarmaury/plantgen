@@ -11,7 +11,6 @@ interface FadeInProps {
   direction?: "up" | "down" | "left" | "right" | "none";
   className?: string;
   once?: boolean;
-  blur?: boolean;
   duration?: number;
 }
 
@@ -21,14 +20,13 @@ export function FadeIn({
   direction = "up",
   className = "",
   once = true,
-  blur = false,
   duration = 0.7,
 }: FadeInProps) {
   const directionMap = {
-    up: { y: 30, x: 0 },
-    down: { y: -30, x: 0 },
-    left: { y: 0, x: 30 },
-    right: { y: 0, x: -30 },
+    up: { y: 20, x: 0 },
+    down: { y: -20, x: 0 },
+    left: { y: 0, x: 20 },
+    right: { y: 0, x: -20 },
     none: { y: 0, x: 0 },
   };
 
@@ -38,13 +36,11 @@ export function FadeIn({
         opacity: 0,
         y: directionMap[direction].y,
         x: directionMap[direction].x,
-        filter: blur ? "blur(10px)" : "blur(0px)",
       }}
       whileInView={{
         opacity: 1,
         y: 0,
         x: 0,
-        filter: "blur(0px)",
       }}
       viewport={{ once, margin: "-60px" }}
       transition={{
@@ -108,11 +104,11 @@ export function BlurReveal({
 }: BlurRevealProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, filter: "blur(16px)", scale: 0.96 }}
-      whileInView={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
+      initial={{ opacity: 0, scale: 0.97 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{
-        duration: 0.8,
+        duration: 0.6,
         delay,
         ease: [0.22, 1, 0.36, 1],
       }}
@@ -151,11 +147,10 @@ export function TextReveal({
         <motion.span
           key={i}
           variants={{
-            hidden: { opacity: 0, y: 12, filter: "blur(4px)" },
+            hidden: { opacity: 0, y: 8 },
             visible: {
               opacity: 1,
               y: 0,
-              filter: "blur(0px)",
               transition: {
                 duration: 0.4,
                 delay: delay + i * 0.06,
@@ -237,10 +232,10 @@ export function SlideIn({
   once = true,
 }: SlideInProps) {
   const offsets = {
-    left: { x: -60, y: 0 },
-    right: { x: 60, y: 0 },
-    up: { x: 0, y: 60 },
-    down: { x: 0, y: -60 },
+    left: { x: -40, y: 0 },
+    right: { x: 40, y: 0 },
+    up: { x: 0, y: 40 },
+    down: { x: 0, y: -40 },
   };
 
   return (

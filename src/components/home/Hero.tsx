@@ -67,22 +67,17 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeInOut" }}
             className="absolute inset-0"
           >
-            {/* Background Image with Ken Burns effect */}
-            <motion.div
-              initial={{ scale: 1.08 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 6, ease: "easeOut" }}
-              className="absolute inset-0"
-            >
+            {/* Background Image */}
+            <div className="absolute inset-0">
               <Image
                 src={slide.image}
                 alt={slide.title}
                 fill
                 className="object-cover"
-                sizes="100vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
                 priority
               />
-            </motion.div>
+            </div>
             {/* Dark overlay for text readability */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
 
@@ -166,7 +161,7 @@ export default function Hero() {
       {/* Trust Strip */}
       <div className="bg-gradient-to-r from-brand-900 via-brand-800 to-teal-900 text-white py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center gap-6 sm:gap-12 lg:gap-20 text-[11px] sm:text-xs lg:text-sm font-medium overflow-x-auto">
+          <div className="flex items-center justify-center gap-6 sm:gap-12 lg:gap-20 text-xs sm:text-xs lg:text-sm font-medium overflow-x-auto">
             <div className="flex items-center gap-2 whitespace-nowrap text-brand-200">
               <Truck className="w-4 h-4 flex-shrink-0 text-brand-300" />
               <span>Same Day Delivery</span>

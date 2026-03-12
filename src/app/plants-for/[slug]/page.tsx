@@ -10,7 +10,7 @@ export const revalidate = 86400;
 
 // Pre-render top 200 highest-priority pages at build time
 export async function generateStaticParams() {
-  const slugs = getTopSlugsForRoute("plants-for", 30);
+  const slugs = getTopSlugsForRoute("plants-for", 200);
   return slugs.map((slug) => ({ slug }));
 }
 

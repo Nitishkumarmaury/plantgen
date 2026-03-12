@@ -1,5 +1,5 @@
 /**
- * Page Registry — Central system that generates all 100k+ SEO page slugs and
+ * Page Registry — Central system that generates SEO page slugs and
  * their associated metadata from dimension combinations.
  *
  * Usage:

@@ -85,7 +85,7 @@ export default function CorporateCTA() {
                 WhatsApp Us
               </a>
               <Link
-                href="/shop?category=Corporate%20Gifts"
+                href="/corporate-plant-gifts"
                 className="inline-flex items-center gap-2 px-7 py-3 border border-neutral-600 text-neutral-300 font-medium text-sm rounded-full hover:bg-neutral-800 transition-colors"
               >
                 Explore Corporate Gifts

@@ -250,7 +250,7 @@ export default function ContactPage() {
                   We offer custom branding, competitive pricing, and dedicated support.
                 </p>
                 <a
-                  href="/shop?category=Corporate%20Gifts"
+                  href="/corporate-plant-gifts"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-white text-neutral-900 rounded-xl text-sm font-medium hover:bg-neutral-100 transition-colors"
                 >
                   Explore Corporate Gifts

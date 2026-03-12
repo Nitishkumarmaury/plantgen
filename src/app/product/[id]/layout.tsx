@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { products } from "@/data/products";
 import { SITE_URL } from "@/lib/constants";
+
+// Pre-render all product pages at build time for SEO
+export function generateStaticParams() {
+  return products.map((p) => ({ id: p.id }));
+}
 
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-  const product = products.find((p) => p.id === params.id);
+  const { id } = await params;
+  const product = products.find((p) => p.id === id);
 
   if (!product) {
     return { title: "Product Not Found" };
@@ -43,7 +50,7 @@ export async function generateMetadata({
 // Product JSON-LD structured data
 function ProductJsonLd({ id }: { id: string }) {
   const product = products.find((p) => p.id === id);
-  if (!product) return null;
+  if (!product) notFound();
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -78,16 +85,20 @@ function ProductJsonLd({ id }: { id: string }) {
   );
 }
 
-export default function ProductLayout({
+export default async function ProductLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
+  const product = products.find((p) => p.id === id);
+  if (!product) notFound();
+
   return (
     <>
-      <ProductJsonLd id={params.id} />
+      <ProductJsonLd id={id} />
       {children}
     </>
   );

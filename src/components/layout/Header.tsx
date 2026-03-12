@@ -10,8 +10,8 @@ import { useRouter } from "next/navigation";
 
 const navLinks = [
   { href: "/shop", label: "Plants" },
-  { href: "/shop?search=birthday", label: "Birthday" },
-  { href: "/shop?category=Corporate+Gifts", label: "Corporate" },
+  { href: "/plant-gifts/birthday", label: "Birthday" },
+  { href: "/corporate-plant-gifts", label: "Corporate" },
   { href: "/custom-order", label: "Custom Order" },
   { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
@@ -20,14 +20,14 @@ const navLinks = [
 
 const mobileCategories = [
   { href: "/shop", label: "All Plants" },
-  { href: "/shop?search=birthday", label: "Birthday Gifts" },
-  { href: "/shop?category=Corporate+Gifts", label: "Corporate Gifting" },
-  { href: "/shop?search=festive", label: "Festive Plants" },
-  { href: "/shop?category=Indoor+Plants", label: "Indoor Plants" },
-  { href: "/shop?category=Flowering+Plants", label: "Flowering Plants" },
-  { href: "/shop?category=Desk+Plants", label: "Desk Plants" },
-  { href: "/shop?category=Succulents", label: "Succulents" },
-  { href: "/shop?category=Herbs", label: "Herbs" },
+  { href: "/plant-gifts/birthday", label: "Birthday Gifts" },
+  { href: "/corporate-plant-gifts", label: "Corporate Gifting" },
+  { href: "/plant-gifts/festive", label: "Festive Plants" },
+  { href: "/eco-friendly-gifts", label: "Eco-Friendly Gifts" },
+  { href: "/plant-bouquet", label: "Plant Bouquets" },
+  { href: "/plant-return-gifts", label: "Return Gifts" },
+  { href: "/welcome-plant-gifts", label: "Welcome Gifts" },
+  { href: "/plant-gifts-chandigarh", label: "Chandigarh Gifts" },
 ];
 
 export default function Header() {
@@ -65,6 +65,16 @@ export default function Header() {
     return () => {
       document.body.style.overflow = "";
     };
+  }, [mobileOpen]);
+
+  // Close mobile menu on Escape key
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileOpen(false);
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, [mobileOpen]);
 
   const handleSearch = (e: React.FormEvent) => {
@@ -216,6 +226,7 @@ export default function Header() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search for plants, categories..."
+                    aria-label="Search for plants"
                     className="flex-1 px-5 py-3 bg-neutral-50 border border-neutral-200 rounded-full text-sm focus:outline-none focus:border-neutral-400 focus:ring-0 placeholder:text-neutral-400"
                     autoFocus
                   />
@@ -252,6 +263,8 @@ export default function Header() {
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
               className="fixed top-0 left-0 bottom-0 w-[300px] bg-white z-50 lg:hidden shadow-2xl overflow-y-auto"
+              role="dialog"
+              aria-label="Navigation menu"
             >
               {/* Header */}
               <div className="flex items-center justify-between p-5 border-b border-neutral-100">

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { MapPin } from "lucide-react";
-import { CATEGORIES } from "@/types";
 import { WHATSAPP_URL, INSTAGRAM_URL } from "@/lib/constants";
 
 export default function Footer() {
@@ -33,13 +32,21 @@ export default function Footer() {
               Shop by Category
             </h4>
             <ul className="space-y-3">
-              {CATEGORIES.map((cat) => (
-                <li key={cat}>
+              {[
+                { href: "/shop", label: "All Plants" },
+                { href: "/plant-bouquet", label: "Plant Bouquets" },
+                { href: "/corporate-plant-gifts", label: "Corporate Gifts" },
+                { href: "/eco-friendly-gifts", label: "Eco-Friendly Gifts" },
+                { href: "/plant-return-gifts", label: "Return Gifts" },
+                { href: "/welcome-plant-gifts", label: "Welcome Gifts" },
+                { href: "/college-event-plant-gifts", label: "College Events" },
+              ].map((link) => (
+                <li key={link.href}>
                   <Link
-                    href={`/shop?category=${encodeURIComponent(cat)}`}
+                    href={link.href}
                     className="text-neutral-400 hover:text-white transition-colors text-sm"
                   >
-                    {cat}
+                    {link.label}
                   </Link>
                 </li>
               ))}
@@ -55,13 +62,13 @@ export default function Footer() {
               {[
                 { href: "/shop", label: "All Products" },
                 { href: "/custom-order", label: "Custom Order" },
-                { href: "/shop?category=Corporate%20Gifts", label: "Corporate Gifting" },
+                { href: "/corporate-plant-gifts", label: "Corporate Gifting" },
                 { href: "/blog", label: "Blog" },
                 { href: "/plant-gifts-chandigarh", label: "Plant Gifts Chandigarh" },
                 { href: "/about", label: "About Us" },
                 { href: "/contact", label: "Contact" },
               ].map((link) => (
-                <li key={link.href}>
+                <li key={link.label}>
                   <Link
                     href={link.href}
                     className="text-neutral-400 hover:text-white transition-colors text-sm"

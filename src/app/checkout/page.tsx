@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useCartStore } from "@/store/cart";
 import { useUserAuth } from "@/context/UserAuthContext";
 import { FadeIn } from "@/components/ui/Animations";
@@ -36,6 +36,7 @@ export default function CheckoutPage() {
   const [success, setSuccess] = useState(false);
   const [orderError, setOrderError] = useState("");
   const [orderId, setOrderId] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -273,7 +274,7 @@ export default function CheckoutPage() {
           {/* Form */}
           <div className="lg:col-span-2">
             <FadeIn delay={0.05}>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 {/* Contact Info */}
                 <div className="bg-white rounded-2xl p-6 border border-neutral-100">
                   <h2 className="text-lg font-semibold text-neutral-900 mb-5 flex items-center gap-2">
@@ -536,14 +537,8 @@ export default function CheckoutPage() {
                 {/* Submit (desktop) */}
                 <button
                   type="button"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    try {
-                      const form = document.querySelector("form");
-                      form?.requestSubmit();
-                    } catch {
-                      // Form validation may throw
-                    }
+                  onClick={() => {
+                    formRef.current?.requestSubmit();
                   }}
                   disabled={loading}
                   className="hidden lg:flex w-full items-center justify-center gap-2 mt-6 px-6 py-4 bg-neutral-900 text-white font-semibold rounded-xl hover:bg-neutral-800 disabled:opacity-50 transition-all"

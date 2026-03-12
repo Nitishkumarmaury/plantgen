@@ -39,7 +39,7 @@ const testimonials = [
     name: "Vikram Singh",
     role: "Housewarming Gift",
     location: "Zirakpur",
-    date: "Mar 2026",
+    date: "Feb 2026",
     content:
       "Sent the Air Purifier Trio to a friend's new flat. They texted me saying it was hands down the best housewarming gift they received. Same-day delivery was a lifesaver since I almost forgot! Definitely my go-to gift shop now.",
     rating: 5,

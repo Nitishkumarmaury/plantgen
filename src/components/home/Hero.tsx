@@ -16,6 +16,7 @@ const heroSlides = [
     secondaryCta: "How It Works",
     secondaryLink: "#how-it-works",
     image: "/hero/hero-indoor-plants.jpg",
+    imageAlt: "Beautiful indoor plants arranged as gift bouquets — Plantgen Chandigarh plant delivery",
   },
   {
     id: 2,
@@ -24,8 +25,9 @@ const heroSlides = [
     cta: "Get Bulk Quote",
     ctaLink: "/custom-order",
     secondaryCta: "See Options",
-    secondaryLink: "/shop?category=Corporate%20Gifts",
+    secondaryLink: "/corporate-plant-gifts",
     image: "/hero/hero-corporate-plants.jpg",
+    imageAlt: "Corporate bulk plant gifts with custom branding — Plantgen corporate gifting service",
   },
   {
     id: 3,
@@ -36,6 +38,7 @@ const heroSlides = [
     secondaryCta: "Our Story",
     secondaryLink: "/about",
     image: "/hero/hero-flowering-plants.jpg",
+    imageAlt: "Flowering plants in premium gift wrapping — Plantgen eco-friendly plant gifts",
   },
 ];
 
@@ -77,7 +80,7 @@ export default function Hero() {
             <div className="absolute inset-0">
               <Image
                 src={slide.image}
-                alt={slide.title}
+                alt={slide.imageAlt}
                 fill
                 className="object-cover"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"

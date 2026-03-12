@@ -28,6 +28,16 @@ export default function CartDrawer() {
     };
   }, [isOpen]);
 
+  // Close on Escape key
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeCart();
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, closeCart]);
+
   if (!mounted) return null;
 
   const total = totalPrice();
@@ -49,6 +59,8 @@ export default function CartDrawer() {
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
             className="fixed top-0 right-0 bottom-0 w-full max-w-md bg-white z-50 flex flex-col shadow-2xl"
+            role="dialog"
+            aria-label="Shopping cart"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-100">

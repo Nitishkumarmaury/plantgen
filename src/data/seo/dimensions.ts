@@ -1,5 +1,5 @@
 /**
- * SEO Dimensions — The building blocks for 100k+ programmatic pages.
+ * SEO Dimensions — The building blocks for programmatic SEO pages.
  *
  * Every array here is a "dimension". Combining dimensions produces unique
  * long-tail keyword pages:

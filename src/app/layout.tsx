@@ -80,15 +80,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "48x48" },
-      { url: "/favicon-48x48.png", type: "image/png", sizes: "48x48" },
-      { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
       { url: "/favicon-192x192.png", type: "image/png", sizes: "192x192" },
     ],
     apple: [
       { url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" },
     ],
-    shortcut: "/favicon.ico",
   },
   manifest: "/site.webmanifest",
   robots: {

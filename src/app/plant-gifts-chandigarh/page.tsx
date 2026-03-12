@@ -47,7 +47,7 @@ const occasions = [
   {
     name: "Corporate",
     emoji: "🏢",
-    href: "/shop?category=Corporate%20Gifts",
+    href: "/corporate-plant-gifts",
     desc: "Impress clients & welcome employees",
   },
   {
@@ -587,11 +587,11 @@ export default function PlantGiftsChandigarhPage() {
           </h2>
           <div className="flex flex-wrap gap-2">
             {[
-              { label: "Indoor Plants", href: "/shop?category=Indoor%20Plants" },
-              { label: "Desk Plants", href: "/shop?category=Desk%20Plants" },
-              { label: "Flowering Plants", href: "/shop?category=Flowering%20Plants" },
-              { label: "Succulents", href: "/shop?category=Succulents" },
-              { label: "Corporate Gifts", href: "/shop?category=Corporate%20Gifts" },
+              { label: "Plant Bouquets", href: "/plant-bouquet" },
+              { label: "Eco-Friendly Gifts", href: "/eco-friendly-gifts" },
+              { label: "Return Gifts", href: "/plant-return-gifts" },
+              { label: "Welcome Gifts", href: "/welcome-plant-gifts" },
+              { label: "Corporate Gifts", href: "/corporate-plant-gifts" },
               { label: "Birthday Plant Gifts", href: "/plant-gifts/birthday" },
               { label: "Anniversary Gifts", href: "/plant-gifts/anniversary" },
               { label: "Housewarming Gifts", href: "/plant-gifts/housewarming" },

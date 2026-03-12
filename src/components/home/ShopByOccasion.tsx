@@ -10,42 +10,49 @@ const categories = [
     image: "/plants/indoor_plants/monstera_pot_09.jpg",
     description: "Air-purifying plants for your home",
     gradient: "from-brand-900/80 via-brand-800/30 to-transparent",
+    href: "/shop?category=Indoor%20Plants",
   },
   {
     name: "Desk Plants",
     image: "/plants/desk_plants/succulent_green_pot_01.jpg",
     description: "Compact greens for your workspace",
     gradient: "from-teal-900/80 via-teal-800/30 to-transparent",
+    href: "/shop?category=Desk%20Plants",
   },
   {
     name: "Flowering Plants",
     image: "/plants/flowering_plants/orchid_white_pot_02.jpg",
     description: "Beautiful blooms to brighten any room",
     gradient: "from-coral-900/80 via-coral-800/30 to-transparent",
+    href: "/shop?category=Flowering%20Plants",
   },
   {
     name: "Outdoor Plants",
     image: "/plants/outdoor_plants/bird_of_paradise_pot_04.jpg",
     description: "Hardy plants for gardens & balconies",
     gradient: "from-brand-900/80 via-brand-800/30 to-transparent",
+    href: "/shop?category=Outdoor%20Plants",
   },
   {
     name: "Herbs",
     image: "/plants/herbs/basil_herb_pot_01.jpg",
     description: "Fresh herbs for your kitchen garden",
     gradient: "from-warm-900/80 via-warm-800/30 to-transparent",
+    href: "/shop?category=Herbs",
   },
   {
     name: "Succulents",
     image: "/plants/succulents/echeveria_elegans_pot_01.jpg",
     description: "Low-maintenance beauties",
     gradient: "from-teal-900/80 via-teal-800/30 to-transparent",
+    href: "/shop?category=Succulents",
   },
   {
     name: "Corporate Gifts",
     image: "/plants/corporate_gift_plants/terrarium_gift_05.jpg",
     description: "Professional green gifting solutions",
     gradient: "from-neutral-900/80 via-neutral-800/30 to-transparent",
+    href: "/corporate-plant-gifts",
   },
 ];
 
@@ -72,7 +79,7 @@ export default function ShopByOccasion() {
               delay={Math.min(i * 0.06, 0.36)}
             >
               <Link
-                href={`/shop?category=${encodeURIComponent(cat.name)}`}
+                href={cat.href}
                 className="group block relative rounded-2xl overflow-hidden aspect-[4/5]"
               >
                 <Image
